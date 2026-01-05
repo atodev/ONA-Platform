@@ -3,6 +3,7 @@
 Thank you for your interest in contributing to the ONA Platform! This document provides guidelines for contributing to the project.
 
 ## 📋 Table of Contents
+
 - [Code of Conduct](#code-of-conduct)
 - [Getting Started](#getting-started)
 - [Development Process](#development-process)
@@ -38,14 +39,17 @@ This project adheres to a code of conduct. By participating, you are expected to
 ## Development Process
 
 ### Architecture Guidelines
+
 - Review [ARCHITECTURE_SUMMARY.md](./ARCHITECTURE_SUMMARY.md) for design patterns
 - Follow [DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md) for project phases
 - Check [PROJECT_STRUCTURE.md](./PROJECT_STRUCTURE.md) for file organization
 
 ### Python Backend Rules
+
 **CRITICAL: No Classes - Modules Only**
 
 ✅ **DO: Use functional modules**
+
 ```python
 # ✅ services/analytics/metrics_calculator.py
 def calculate_density(graph: nx.Graph) -> float:
@@ -58,6 +62,7 @@ def calculate_clustering(graph: nx.Graph) -> float:
 ```
 
 ❌ **DON'T: Use classes**
+
 ```python
 # ❌ Avoid this pattern
 class GraphAnalyzer:
@@ -66,6 +71,7 @@ class GraphAnalyzer:
 ```
 
 ### Frontend Standards
+
 - Use **TypeScript** (not JavaScript)
 - Functional components with hooks (no class components)
 - Follow **Material-UI** design system
@@ -76,6 +82,7 @@ class GraphAnalyzer:
 ## Coding Standards
 
 ### Python (Backend)
+
 - **Style**: PEP 8 compliant
 - **Formatting**: Use `black` formatter
 - **Linting**: Use `pylint` and `mypy`
@@ -86,19 +93,19 @@ class GraphAnalyzer:
 def calculate_metrics(graph: nx.Graph) -> Dict[str, float]:
     """
     Calculate basic network metrics.
-    
+
     Args:
         graph: NetworkX graph instance
-        
+
     Returns:
         Dictionary of metric name to value
-        
+
     Raises:
         ValueError: If graph is empty
     """
     if graph.number_of_nodes() == 0:
         raise ValueError("Graph cannot be empty")
-    
+
     return {
         "density": nx.density(graph),
         "clustering": nx.average_clustering(graph)
@@ -106,6 +113,7 @@ def calculate_metrics(graph: nx.Graph) -> Dict[str, float]:
 ```
 
 ### TypeScript (Frontend)
+
 - **Style**: Follow Airbnb style guide
 - **Formatting**: Use Prettier
 - **Linting**: Use ESLint
@@ -123,6 +131,7 @@ const calculateNodeSize = (node: Node): number => {
 ```
 
 ### Testing
+
 - **Coverage**: Minimum 80% for new code
 - **Unit tests**: For all functions
 - **Integration tests**: For API endpoints
@@ -133,6 +142,7 @@ const calculateNodeSize = (node: Node): number => {
 ## Submitting Changes
 
 ### Commit Messages
+
 Follow conventional commits format:
 
 ```
@@ -144,6 +154,7 @@ footer (optional)
 ```
 
 **Types:**
+
 - `feat`: New feature
 - `fix`: Bug fix
 - `docs`: Documentation changes
@@ -153,6 +164,7 @@ footer (optional)
 - `chore`: Maintenance tasks
 
 **Examples:**
+
 ```
 feat(analytics): add community detection algorithm
 
@@ -167,21 +179,24 @@ Closes #123
 1. **Update documentation** if needed
 2. **Add tests** for new functionality
 3. **Run tests locally**:
+
    ```bash
    # Backend
    cd backend
    pytest
-   
+
    # Frontend
    cd frontend
    npm test
    ```
+
 4. **Update CHANGELOG.md** (if applicable)
 5. **Create pull request** with clear description
 6. **Request review** from maintainers
 7. **Address feedback** promptly
 
 ### PR Checklist
+
 - [ ] Code follows module-based pattern (no classes)
 - [ ] Tests pass locally
 - [ ] Documentation updated
@@ -196,6 +211,7 @@ Closes #123
 Use the [Bug Report Template](.github/ISSUE_TEMPLATE/bug_report.md)
 
 Include:
+
 - Clear description
 - Steps to reproduce
 - Expected vs actual behavior
@@ -210,6 +226,7 @@ Include:
 Use the [Feature Request Template](.github/ISSUE_TEMPLATE/feature_request.md)
 
 Include:
+
 - Problem description
 - Proposed solution
 - Use case
@@ -227,6 +244,7 @@ Include:
 - `test/description` - Test additions
 
 **Examples:**
+
 - `feature/kafka-streaming`
 - `fix/neo4j-connection-pool`
 - `docs/scalability-guide`
@@ -236,6 +254,7 @@ Include:
 ## Testing Guidelines
 
 ### Backend Tests
+
 ```python
 # tests/unit/test_metrics_calculator.py
 import pytest
@@ -255,18 +274,19 @@ def test_calculate_density_complete_graph():
 ```
 
 ### Frontend Tests
+
 ```typescript
 // ForceGraph2D.test.tsx
-import { render, screen } from '@testing-library/react';
-import { ForceGraph2DComponent } from './ForceGraph2D';
+import { render, screen } from "@testing-library/react";
+import { ForceGraph2DComponent } from "./ForceGraph2D";
 
-describe('ForceGraph2D', () => {
-  it('renders graph with nodes', () => {
+describe("ForceGraph2D", () => {
+  it("renders graph with nodes", () => {
     const data = {
-      nodes: [{ id: '1' }, { id: '2' }],
-      edges: [{ source: '1', target: '2' }]
+      nodes: [{ id: "1" }, { id: "2" }],
+      edges: [{ source: "1", target: "2" }],
     };
-    
+
     render(<ForceGraph2DComponent data={data} />);
     // Add assertions
   });

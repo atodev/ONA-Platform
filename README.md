@@ -22,13 +22,15 @@ This project includes comprehensive planning and implementation documentation:
 
 ### Core Planning Documents
 
-1. **[DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md)** ⭐ *Start Here*
+1. **[DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md)** ⭐ _Start Here_
+
    - Complete 24-week development roadmap
    - 10 phases with detailed milestones and 200+ todos
    - Team structure, budget estimates, risk management
    - Success metrics and KPIs
 
 2. **[ARCHITECTURE_SUMMARY.md](./ARCHITECTURE_SUMMARY.md)** 🏗️
+
    - Quick reference guide for architecture decisions
    - Technology stack breakdown
    - Data flow diagrams
@@ -37,6 +39,7 @@ This project includes comprehensive planning and implementation documentation:
    - Deployment architecture
 
 3. **[ARCHITECTURE_SUMMARY.md](./ARCHITECTURE_SUMMARY.md)** 🏗️
+
    - Quick reference guide for architecture decisions
    - Technology stack breakdown
    - Data flow diagrams
@@ -45,6 +48,7 @@ This project includes comprehensive planning and implementation documentation:
    - Deployment architecture
 
 4. **[SCALABILITY_ANALYSIS.md](./SCALABILITY_ANALYSIS.md)** 📈
+
    - How to scale from 100 to 100,000+ users
    - Component-by-component scaling strategies
    - Cost analysis at different scales
@@ -64,6 +68,7 @@ This project includes comprehensive planning and implementation documentation:
 ## 🏗️ Architecture Highlights
 
 ### Frontend Stack
+
 ```
 React 18 + TypeScript
 ├── react-force-graph-2d/3d (WebGL visualization)
@@ -73,6 +78,7 @@ React 18 + TypeScript
 ```
 
 ### Backend Stack (Python Modules Only - No Classes)
+
 ```
 FastAPI (API Gateway)
 ├── Data Ingestion Service
@@ -86,6 +92,7 @@ FastAPI (API Gateway)
 ```
 
 ### Data Layer
+
 ```
 Neo4j (primary graph database, multi-tenant)
 PostgreSQL (licenses, tenants, metadata)
@@ -100,18 +107,19 @@ Apache Kafka (streaming ingestion)
 
 ### Tier Comparison
 
-| Feature | Demo | Basic | Professional | Enterprise |
-|---------|------|-------|--------------|------------|
-| **Price** | Free | $99/mo | $499/mo | Custom |
-| **Data Input** | ❌ | ✅ Files + Neo4j | ✅ All sources | ✅ All + APIs |
-| **Max Nodes** | 100 | 5,000 | 50,000 | Unlimited |
-| **3D Visualization** | ❌ | ✅ | ✅ | ✅ |
-| **Streaming (Kafka)** | ❌ | ❌ | ✅ | ✅ |
-| **Export** | ❌ | ✅ | ✅ | ✅ |
-| **API Access** | ❌ | Read-only | Full | Full + webhooks |
-| **Users** | 1 | 5 | 25 | Unlimited |
+| Feature               | Demo | Basic            | Professional   | Enterprise      |
+| --------------------- | ---- | ---------------- | -------------- | --------------- |
+| **Price**             | Free | $99/mo           | $499/mo        | Custom          |
+| **Data Input**        | ❌   | ✅ Files + Neo4j | ✅ All sources | ✅ All + APIs   |
+| **Max Nodes**         | 100  | 5,000            | 50,000         | Unlimited       |
+| **3D Visualization**  | ❌   | ✅               | ✅             | ✅              |
+| **Streaming (Kafka)** | ❌   | ❌               | ✅             | ✅              |
+| **Export**            | ❌   | ✅               | ✅             | ✅              |
+| **API Access**        | ❌   | Read-only        | Full           | Full + webhooks |
+| **Users**             | 1    | 5                | 25             | Unlimited       |
 
 **Demo Mode Features:**
+
 - Read-only sample datasets
 - Basic 2D visualization (100 nodes max)
 - Watermarked visualizations
@@ -122,12 +130,14 @@ Apache Kafka (streaming ingestion)
 ## 🚀 Quick Start
 
 ### Prerequisites
+
 - Python 3.11+
 - Node.js 18+
 - Docker & Docker Compose
 - Git
 
 ### 1. Start Infrastructure
+
 ```bash
 # Start all services (Neo4j, PostgreSQL, MongoDB, Redis, Kafka)
 docker-compose up -d
@@ -137,6 +147,7 @@ docker-compose ps
 ```
 
 ### 2. Setup Backend
+
 ```bash
 cd backend
 python -m venv venv
@@ -146,6 +157,7 @@ python api/gateway.py
 ```
 
 ### 3. Setup Frontend
+
 ```bash
 cd frontend
 npm install
@@ -153,6 +165,7 @@ npm run dev
 ```
 
 ### 4. Access Application
+
 - **Frontend**: http://localhost:5173
 - **API Docs**: http://localhost:8000/docs
 - **Neo4j Browser**: http://localhost:7474
@@ -162,6 +175,7 @@ npm run dev
 ## 📊 Key Features
 
 ### Multi-Source Data Ingestion
+
 - ✅ **Neo4j Direct Connection** - Query existing graph databases
 - ✅ **Relational Databases** - SQL queries from PostgreSQL, MySQL, MSSQL
 - ✅ **Edge Files** - CSV, JSON, GraphML, GEXF formats
@@ -169,6 +183,7 @@ npm run dev
 - ✅ **Batch Uploads** - Large file processing with progress tracking
 
 ### Advanced Network Visualization
+
 - ✅ **2D/3D Toggle** - WebGL-accelerated rendering
 - ✅ **Force-Directed Layouts** - Interactive physics simulation
 - ✅ **Custom Styling** - Node size/color by attributes
@@ -176,6 +191,7 @@ npm run dev
 - ✅ **Large Graph Support** - Optimized for 50K+ nodes
 
 ### Graph Analytics
+
 - ✅ **Centrality Measures** - Degree, betweenness, closeness, eigenvector
 - ✅ **Community Detection** - Louvain algorithm
 - ✅ **Clique Detection** - Find maximal cliques
@@ -183,6 +199,7 @@ npm run dev
 - ✅ **Path Analysis** - Shortest paths, triadic closure
 
 ### Multi-Tenant Architecture
+
 - ✅ **Account Isolation** - Data separated by tenant_id
 - ✅ **Neo4j Labels** - Tenant-specific node/edge labels
 - ✅ **API Key Validation** - Per-request tenant identification
@@ -193,6 +210,7 @@ npm run dev
 ## 🛠️ Technology Stack
 
 ### Frontend
+
 - React 18.2+
 - TypeScript 5.0+
 - react-force-graph-2d/3d
@@ -201,6 +219,7 @@ npm run dev
 - Vite 5.0+
 
 ### Backend (Python Modules - No Classes)
+
 - FastAPI 0.109+
 - NetworkX 3.2+
 - Pandas 2.1+
@@ -209,6 +228,7 @@ npm run dev
 - Celery 5.3+
 
 ### Infrastructure
+
 - Neo4j 5.15 (graph database)
 - PostgreSQL 16 (relational)
 - MongoDB 7 (document store)
@@ -220,21 +240,22 @@ npm run dev
 
 ## 📅 Project Timeline
 
-| Phase | Duration | Description |
-|-------|----------|-------------|
-| Phase 1-2 | Weeks 1-5 | Foundation, backend services |
-| Phase 3-4 | Weeks 6-9 | Frontend foundation, data management |
-| Phase 5-6 | Weeks 10-15 | Network visualization, advanced charts |
-| Phase 7 | Weeks 16-18 | Streaming integration, collaboration |
-| Phase 8-9 | Weeks 19-22 | Performance optimization, testing |
-| Phase 10 | Weeks 23-24 | Deployment, launch |
-| **Total** | **~6 months** | **Full production release** |
+| Phase     | Duration      | Description                            |
+| --------- | ------------- | -------------------------------------- |
+| Phase 1-2 | Weeks 1-5     | Foundation, backend services           |
+| Phase 3-4 | Weeks 6-9     | Frontend foundation, data management   |
+| Phase 5-6 | Weeks 10-15   | Network visualization, advanced charts |
+| Phase 7   | Weeks 16-18   | Streaming integration, collaboration   |
+| Phase 8-9 | Weeks 19-22   | Performance optimization, testing      |
+| Phase 10  | Weeks 23-24   | Deployment, launch                     |
+| **Total** | **~6 months** | **Full production release**            |
 
 ---
 
 ## 👥 Team Requirements
 
 ### Core Team (Recommended)
+
 - 1x Tech Lead / Architect
 - 2x Senior Full-Stack Developers
 - 1x Frontend Developer (React specialist)
@@ -249,12 +270,14 @@ npm run dev
 ## 💰 Budget Estimate
 
 ### Development (6 months)
+
 - Team: $400K - $600K
 - Infrastructure: $5K - $10K
 - Tools/Services: $5K - $10K
 - **Total**: ~$410K - $620K
 
 ### Annual Operating Costs
+
 - Infrastructure: $30K - $60K (includes Neo4j Enterprise, Kafka)
 - Maintenance: $100K - $150K
 - Monitoring: $5K - $10K
@@ -302,6 +325,7 @@ Neo4j/SQL/Files → Connectors/Parsers → Neo4j (tenant) → Analytics → reac
 ## 📖 Key Design Principles
 
 ### 1. Module-Based Python (No Classes)
+
 ```python
 # ✅ PREFER: Pure functions
 def calculate_metrics(graph: nx.Graph) -> dict:
@@ -314,16 +338,19 @@ class GraphAnalyzer:
 ```
 
 ### 2. Multi-Tenant Isolation
+
 - Every Neo4j node/edge has `tenant_id` property
 - All queries filter by `tenant_id`
 - API middleware extracts tenant from license key
 
 ### 3. License-Gated Features
+
 - Demo mode: No key required, limited features
 - Licensed modes: Key required, features by tier
 - Frontend checks license before rendering components
 
 ### 4. Scalability First
+
 - Horizontal scaling for all services
 - Caching at multiple layers (Redis, MongoDB)
 - Async processing for heavy workloads (Celery)
@@ -343,16 +370,19 @@ class GraphAnalyzer:
 ## 🚢 Deployment
 
 ### Development
+
 ```bash
 docker-compose -f docker-compose.dev.yml up
 ```
 
 ### Production (Kubernetes)
+
 ```bash
 kubectl apply -f k8s/
 ```
 
 ### Monitoring
+
 - Prometheus (metrics)
 - Grafana (dashboards)
 - ELK Stack (logging)
@@ -365,6 +395,7 @@ kubectl apply -f k8s/
 This is a planning and architecture repository. Implementation will follow the guidelines in the documentation.
 
 ### Development Workflow
+
 1. Review [DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md) for current phase
 2. Check [ARCHITECTURE_SUMMARY.md](./ARCHITECTURE_SUMMARY.md) for design patterns
 3. Follow code examples in [IMPLEMENTATION_GUIDE.md](./IMPLEMENTATION_GUIDE.md)

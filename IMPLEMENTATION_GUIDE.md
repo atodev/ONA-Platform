@@ -3,6 +3,7 @@
 ## Getting Started with Development
 
 ### Prerequisites
+
 - Python 3.11+
 - Node.js 18+
 - Docker & Docker Compose
@@ -81,15 +82,15 @@ npm install -D @types/d3 @types/react-router-dom
 Create `docker-compose.yml`:
 
 ```yaml
-version: '3.9'
+version: "3.9"
 
 services:
   # Neo4j Graph Database
   neo4j:
     image: neo4j:5.15-enterprise
     ports:
-      - "7474:7474"  # Browser UI
-      - "7687:7687"  # Bolt
+      - "7474:7474" # Browser UI
+      - "7687:7687" # Bolt
     environment:
       NEO4J_AUTH: neo4j/password
       NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
@@ -150,6 +151,7 @@ volumes:
 ```
 
 Start all services:
+
 ```bash
 docker-compose up -d
 ```
@@ -174,12 +176,12 @@ logger = logging.getLogger(__name__)
 def create_driver(uri: str, user: str, password: str) -> Driver:
     """
     Create Neo4j driver instance.
-    
+
     Args:
         uri: Neo4j connection URI (bolt://...)
         user: Database username
         password: Database password
-        
+
     Returns:
         Neo4j driver instance
     """
@@ -189,10 +191,10 @@ def create_driver(uri: str, user: str, password: str) -> Driver:
 def test_connection(driver: Driver) -> bool:
     """
     Test Neo4j connection.
-    
+
     Args:
         driver: Neo4j driver instance
-        
+
     Returns:
         True if connection successful, False otherwise
     """
@@ -214,26 +216,26 @@ def fetch_graph_edges(
 ) -> List[Dict[str, Any]]:
     """
     Fetch graph edges for a specific tenant.
-    
+
     Args:
         driver: Neo4j driver instance
         tenant_id: Tenant identifier for data isolation
         node_label: Label for nodes (default: "Node")
         edge_type: Type for relationships (default: "EDGE")
         filters: Optional filters (e.g., {"min_weight": 0.5})
-        
+
     Returns:
         List of edge dictionaries with source, target, properties
     """
     filters = filters or {}
     min_weight = filters.get("min_weight", 0.0)
-    
+
     query = f"""
     MATCH (source:{node_label} {{tenant_id: $tenant_id}})
           -[edge:{edge_type} {{tenant_id: $tenant_id}}]->
           (target:{node_label} {{tenant_id: $tenant_id}})
     WHERE edge.weight >= $min_weight
-    RETURN 
+    RETURN
         source.id AS source_id,
         target.id AS target_id,
         edge.weight AS weight,
@@ -242,7 +244,7 @@ def fetch_graph_edges(
         properties(target) AS target_props
     LIMIT $limit
     """
-    
+
     with driver.session() as session:
         result = session.run(
             query,
@@ -250,7 +252,7 @@ def fetch_graph_edges(
             min_weight=min_weight,
             limit=filters.get("limit", 10000)
         )
-        
+
         return [
             {
                 "source": record["source_id"],
@@ -273,14 +275,14 @@ def write_graph_edges(
 ) -> Dict[str, int]:
     """
     Write graph edges to Neo4j with tenant isolation.
-    
+
     Args:
         driver: Neo4j driver instance
         tenant_id: Tenant identifier
         edges: List of edge dicts with 'source', 'target', 'weight', etc.
         node_label: Label for nodes
         edge_type: Type for relationships
-        
+
     Returns:
         Dictionary with counts of nodes/edges created
     """
@@ -292,11 +294,11 @@ def write_graph_edges(
     SET rel.weight = edge.weight,
         rel.updated_at = datetime()
     """
-    
+
     with driver.session() as session:
         result = session.run(query, edges=edges, tenant_id=tenant_id)
         summary = result.consume()
-        
+
         return {
             "nodes_created": summary.counters.nodes_created,
             "relationships_created": summary.counters.relationships_created,
@@ -307,11 +309,11 @@ def write_graph_edges(
 def delete_tenant_data(driver: Driver, tenant_id: str) -> int:
     """
     Delete all data for a specific tenant.
-    
+
     Args:
         driver: Neo4j driver instance
         tenant_id: Tenant identifier
-        
+
     Returns:
         Number of nodes deleted
     """
@@ -320,7 +322,7 @@ def delete_tenant_data(driver: Driver, tenant_id: str) -> int:
     DETACH DELETE n
     RETURN count(n) AS deleted_count
     """
-    
+
     with driver.session() as session:
         result = session.run(query, tenant_id=tenant_id)
         return result.single()["deleted_count"]
@@ -339,10 +341,10 @@ from typing import Dict, Any, List
 def calculate_basic_metrics(graph: nx.Graph) -> Dict[str, Any]:
     """
     Calculate basic network metrics.
-    
+
     Args:
         graph: NetworkX graph instance
-        
+
     Returns:
         Dictionary of metric name -> value
     """
@@ -359,10 +361,10 @@ def calculate_basic_metrics(graph: nx.Graph) -> Dict[str, Any]:
 def calculate_centrality_metrics(graph: nx.Graph) -> Dict[str, Dict[str, float]]:
     """
     Calculate centrality measures for all nodes.
-    
+
     Args:
         graph: NetworkX graph instance
-        
+
     Returns:
         Dictionary of centrality type -> {node: score}
     """
@@ -381,12 +383,12 @@ def find_top_nodes_by_centrality(
 ) -> List[Dict[str, Any]]:
     """
     Find top N nodes by centrality measure.
-    
+
     Args:
         graph: NetworkX graph instance
         centrality_type: Type of centrality ("degree", "betweenness", etc.)
         top_n: Number of top nodes to return
-        
+
     Returns:
         List of {node, score} dictionaries
     """
@@ -396,13 +398,13 @@ def find_top_nodes_by_centrality(
         "closeness": nx.closeness_centrality,
         "eigenvector": nx.eigenvector_centrality
     }
-    
+
     if centrality_type not in centrality_funcs:
         raise ValueError(f"Unknown centrality type: {centrality_type}")
-    
+
     centrality = centrality_funcs[centrality_type](graph)
     sorted_nodes = sorted(centrality.items(), key=lambda x: x[1], reverse=True)
-    
+
     return [
         {"node": node, "score": score}
         for node, score in sorted_nodes[:top_n]
@@ -412,15 +414,15 @@ def find_top_nodes_by_centrality(
 def detect_communities(graph: nx.Graph) -> List[List[str]]:
     """
     Detect communities using Louvain algorithm.
-    
+
     Args:
         graph: NetworkX graph instance
-        
+
     Returns:
         List of communities (each is a list of node IDs)
     """
     import networkx.algorithms.community as nx_comm
-    
+
     communities = nx_comm.louvain_communities(graph)
     return [list(community) for community in communities]
 
@@ -428,11 +430,11 @@ def detect_communities(graph: nx.Graph) -> List[List[str]]:
 def find_largest_cliques(graph: nx.Graph, top_n: int = 5) -> List[List[str]]:
     """
     Find the largest cliques in the graph.
-    
+
     Args:
         graph: NetworkX graph instance
         top_n: Number of largest cliques to return
-        
+
     Returns:
         List of cliques (each is a list of node IDs)
     """
@@ -448,19 +450,19 @@ def calculate_shortest_path(
 ) -> Dict[str, Any]:
     """
     Calculate shortest path between two nodes.
-    
+
     Args:
         graph: NetworkX graph instance
         source: Source node ID
         target: Target node ID
-        
+
     Returns:
         Dictionary with path and length
     """
     try:
         path = nx.shortest_path(graph, source, target)
         length = nx.shortest_path_length(graph, source, target)
-        
+
         return {
             "path": path,
             "length": length,
@@ -533,7 +535,7 @@ TIER_FEATURES = {
 def generate_license_key() -> str:
     """
     Generate a new license key.
-    
+
     Returns:
         32-character hex license key
     """
@@ -543,10 +545,10 @@ def generate_license_key() -> str:
 def hash_license_key(key: str) -> str:
     """
     Hash license key for storage.
-    
+
     Args:
         key: License key
-        
+
     Returns:
         SHA256 hash of key
     """
@@ -559,11 +561,11 @@ def validate_license_key(
 ) -> Optional[Dict[str, Any]]:
     """
     Validate license key and return tier information.
-    
+
     Args:
         key: License key to validate
         db_query_func: Function to query database for license
-        
+
     Returns:
         Dictionary with license info or None if invalid
     """
@@ -575,24 +577,24 @@ def validate_license_key(
             "account_id": "demo",
             "is_demo": True
         }
-    
+
     key_hash = hash_license_key(key)
     license_record = db_query_func(key_hash)
-    
+
     if not license_record:
         return None
-    
+
     # Check expiration
     if license_record.get("expires_at"):
         expires_at = license_record["expires_at"]
         if isinstance(expires_at, str):
             expires_at = datetime.fromisoformat(expires_at)
-        
+
         if expires_at < datetime.utcnow():
             return None
-    
+
     tier = license_record.get("tier", "basic")
-    
+
     return {
         "tier": tier,
         "features": TIER_FEATURES.get(tier, TIER_FEATURES["basic"]),
@@ -608,11 +610,11 @@ def check_feature_access(
 ) -> bool:
     """
     Check if license has access to a feature.
-    
+
     Args:
         license_info: License information dictionary
         feature: Feature name to check
-        
+
     Returns:
         True if feature is accessible, False otherwise
     """
@@ -627,21 +629,21 @@ def check_limit(
 ) -> bool:
     """
     Check if current value exceeds license limit.
-    
+
     Args:
         license_info: License information dictionary
         limit_name: Name of limit (e.g., "max_nodes")
         current_value: Current value to check
-        
+
     Returns:
         True if within limit, False if exceeded
     """
     features = license_info.get("features", {})
     limit = features.get(limit_name)
-    
+
     if limit is None:  # Unlimited
         return True
-    
+
     return current_value <= limit
 ```
 
@@ -679,12 +681,12 @@ async def validate_api_key(x_api_key: Optional[str] = Header(None)):
     """Validate API key from header."""
     from services.licensing.key_validator import validate_license_key
     from database.postgres_ops import query_license_by_hash
-    
+
     license_info = validate_license_key(x_api_key, query_license_by_hash)
-    
+
     if not license_info:
         raise HTTPException(status_code=401, detail="Invalid or expired license key")
-    
+
     return license_info
 
 
@@ -720,9 +722,9 @@ if __name__ == "__main__":
 `frontend/src/components/visualization/ForceGraph2D.tsx`:
 
 ```typescript
-import React, { useRef, useCallback } from 'react';
-import ForceGraph2D from 'react-force-graph-2d';
-import { GraphData } from '../../types/graph';
+import React, { useRef, useCallback } from "react";
+import ForceGraph2D from "react-force-graph-2d";
+import { GraphData } from "../../types/graph";
 
 interface ForceGraph2DProps {
   data: GraphData;
@@ -737,41 +739,47 @@ export const ForceGraph2DComponent: React.FC<ForceGraph2DProps> = ({
   onNodeClick,
   onNodeHover,
   height = 600,
-  width = 800
+  width = 800,
 }) => {
   const forceRef = useRef<any>();
 
-  const handleNodeClick = useCallback((node: any) => {
-    if (onNodeClick) {
-      onNodeClick(node);
-    }
-    
-    // Center camera on node
-    if (forceRef.current) {
-      forceRef.current.centerAt(node.x, node.y, 1000);
-      forceRef.current.zoom(2, 1000);
-    }
-  }, [onNodeClick]);
+  const handleNodeClick = useCallback(
+    (node: any) => {
+      if (onNodeClick) {
+        onNodeClick(node);
+      }
 
-  const nodeCanvasObject = useCallback((node: any, ctx: CanvasRenderingContext2D) => {
-    // Custom node rendering
-    const size = node.size || 5;
-    const color = node.color || '#1976d2';
-    
-    // Draw node
-    ctx.beginPath();
-    ctx.arc(node.x, node.y, size, 0, 2 * Math.PI);
-    ctx.fillStyle = color;
-    ctx.fill();
-    
-    // Draw label
-    if (node.label) {
-      ctx.font = '10px Arial';
-      ctx.fillStyle = '#fff';
-      ctx.textAlign = 'center';
-      ctx.fillText(node.label, node.x, node.y + size + 12);
-    }
-  }, []);
+      // Center camera on node
+      if (forceRef.current) {
+        forceRef.current.centerAt(node.x, node.y, 1000);
+        forceRef.current.zoom(2, 1000);
+      }
+    },
+    [onNodeClick]
+  );
+
+  const nodeCanvasObject = useCallback(
+    (node: any, ctx: CanvasRenderingContext2D) => {
+      // Custom node rendering
+      const size = node.size || 5;
+      const color = node.color || "#1976d2";
+
+      // Draw node
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, size, 0, 2 * Math.PI);
+      ctx.fillStyle = color;
+      ctx.fill();
+
+      // Draw label
+      if (node.label) {
+        ctx.font = "10px Arial";
+        ctx.fillStyle = "#fff";
+        ctx.textAlign = "center";
+        ctx.fillText(node.label, node.x, node.y + size + 12);
+      }
+    },
+    []
+  );
 
   return (
     <ForceGraph2D
@@ -780,9 +788,9 @@ export const ForceGraph2DComponent: React.FC<ForceGraph2DProps> = ({
       height={height}
       width={width}
       nodeLabel="id"
-      nodeColor={(node: any) => node.color || '#1976d2'}
+      nodeColor={(node: any) => node.color || "#1976d2"}
       nodeRelSize={5}
-      linkColor={() => 'rgba(255,255,255,0.2)'}
+      linkColor={() => "rgba(255,255,255,0.2)"}
       linkWidth={(link: any) => Math.sqrt(link.weight || 1)}
       onNodeClick={handleNodeClick}
       onNodeHover={onNodeHover}
@@ -799,6 +807,7 @@ export const ForceGraph2DComponent: React.FC<ForceGraph2DProps> = ({
 ## Running the Application
 
 ### Start Backend
+
 ```bash
 cd backend
 source venv/bin/activate
@@ -807,6 +816,7 @@ python api/gateway.py
 ```
 
 ### Start Frontend
+
 ```bash
 cd frontend
 npm run dev
@@ -814,6 +824,7 @@ npm run dev
 ```
 
 ### Access Services
+
 - **API Docs**: http://localhost:8000/docs
 - **Neo4j Browser**: http://localhost:7474
 - **Frontend**: http://localhost:5173

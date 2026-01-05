@@ -1,11 +1,13 @@
 # Pull Request
 
 ## Description
+
 Please include a summary of the changes and which issue is fixed.
 
 Fixes # (issue)
 
 ## Type of Change
+
 Please delete options that are not relevant.
 
 - [ ] Bug fix (non-breaking change which fixes an issue)
@@ -17,6 +19,7 @@ Please delete options that are not relevant.
 - [ ] Infrastructure/DevOps
 
 ## Component
+
 Which component does this change affect?
 
 - [ ] Backend (Python/FastAPI)
@@ -27,6 +30,7 @@ Which component does this change affect?
 - [ ] CI/CD
 
 ## Testing
+
 Please describe the tests that you ran to verify your changes.
 
 - [ ] Unit tests
@@ -35,11 +39,13 @@ Please describe the tests that you ran to verify your changes.
 - [ ] Manual testing
 
 **Test Configuration**:
+
 - License Tier: [Demo/Basic/Pro/Enterprise]
 - Graph Size: [number of nodes/edges]
 - Data Source: [CSV/Neo4j/SQL/Kafka]
 
 ## Checklist
+
 - [ ] My code follows the Python module-based pattern (no classes)
 - [ ] I have performed a self-review of my code
 - [ ] I have commented my code, particularly in hard-to-understand areas
@@ -51,7 +57,9 @@ Please describe the tests that you ran to verify your changes.
 - [ ] I have updated the CHANGELOG (if applicable)
 
 ## Screenshots (if applicable)
+
 Add screenshots to help explain your changes.
 
 ## Additional Notes
+
 Add any additional notes or context here.

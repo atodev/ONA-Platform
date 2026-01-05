@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planning Phase (January 2026)
+
 - Complete architecture design
 - Technology stack selection
 - 24-week development roadmap
@@ -18,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## Planning Documents Created - 2026-01-06
 
 ### Added
+
 - Complete project architecture and planning documentation
 - DEVELOPMENT_PLAN.md - 24-week development roadmap with 164 tasks
 - ARCHITECTURE_SUMMARY.md - Technical architecture reference
@@ -27,6 +29,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - INDEX.md - Navigation guide for all documentation
 
 ### Architecture Decisions
+
 - React 18 + TypeScript frontend with react-force-graph-2d/3d
 - Python FastAPI backend using module-based architecture (no classes)
 - Neo4j as primary graph database with multi-tenant isolation
@@ -37,6 +40,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - PostgreSQL for licenses/metadata, MongoDB for cached graphs, Redis for caching
 
 ### Infrastructure
+
 - Docker Compose for local development
 - Kubernetes for production deployment
 - Auto-scaling for all services
@@ -47,6 +51,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Planned] Phase 1: Foundation & Setup (Weeks 1-2)
 
 ### To Add
+
 - [ ] Project initialization with monorepo structure
 - [ ] Development environment setup
 - [ ] License management framework
@@ -58,6 +63,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Planned] Phase 2: Core Backend Services (Weeks 3-5)
 
 ### To Add
+
 - [ ] FastAPI API Gateway
 - [ ] Multi-source data ingestion service (Neo4j, SQL, files, Kafka)
 - [ ] Data processing service with Pandas
@@ -75,6 +81,7 @@ See [DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md) for complete roadmap.
 ## Version History
 
 ### Version 2.0.0 (Planned - Q2 2026)
+
 - Complete rewrite from Streamlit to React + FastAPI
 - Multi-tenant architecture
 - Horizontal scalability
@@ -82,6 +89,7 @@ See [DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md) for complete roadmap.
 - API key-based licensing
 
 ### Version 1.0.0 (Current - Legacy)
+
 - Streamlit-based application
 - CSV file upload
 - PyVis network visualization
@@ -95,6 +103,7 @@ See [DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md) for complete roadmap.
 ### From v1.0 (Streamlit) to v2.0 (React)
 
 Migration will be available when v2.0 is released. Key changes:
+
 - Web-based interface (no local installation required)
 - API key required for data input (demo mode available)
 - Enhanced performance with WebGL rendering
@@ -106,6 +115,7 @@ Migration will be available when v2.0 is released. Key changes:
 ## Support
 
 For questions about changes:
+
 - Review [DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md)
 - Check [ARCHITECTURE_SUMMARY.md](./ARCHITECTURE_SUMMARY.md)
 - Open an issue on GitHub

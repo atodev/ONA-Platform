@@ -3,6 +3,7 @@
 ## Executive Summary
 
 The ONA Platform v2.0 architecture is designed for **horizontal scalability** with target support for:
+
 - **10,000+ concurrent users**
 - **1,000+ requests/second**
 - **Graphs with 1M+ nodes**
@@ -13,13 +14,13 @@ The ONA Platform v2.0 architecture is designed for **horizontal scalability** wi
 
 ## 🎯 Scalability Targets by License Tier
 
-| Metric | Demo | Basic | Professional | Enterprise |
-|--------|------|-------|--------------|------------|
-| Max Nodes per Graph | 100 | 5,000 | 50,000 | 1,000,000+ |
-| Concurrent Users | 100 | 500 | 5,000 | 50,000+ |
-| API Calls/Month | 100 | 10,000 | 100,000 | Unlimited |
-| Data Storage | N/A | 10 GB | 100 GB | 10+ TB |
-| Streaming Events/Sec | N/A | N/A | 1,000 | 100,000+ |
+| Metric               | Demo | Basic  | Professional | Enterprise |
+| -------------------- | ---- | ------ | ------------ | ---------- |
+| Max Nodes per Graph  | 100  | 5,000  | 50,000       | 1,000,000+ |
+| Concurrent Users     | 100  | 500    | 5,000        | 50,000+    |
+| API Calls/Month      | 100  | 10,000 | 100,000      | Unlimited  |
+| Data Storage         | N/A  | 10 GB  | 100 GB       | 10+ TB     |
+| Streaming Events/Sec | N/A  | N/A    | 1,000        | 100,000+   |
 
 ---
 
@@ -28,9 +29,11 @@ The ONA Platform v2.0 architecture is designed for **horizontal scalability** wi
 ### 1. API Gateway (FastAPI)
 
 #### Current Bottleneck
+
 Single FastAPI instance: ~500-1,000 req/sec
 
 #### Horizontal Scaling Approach
+
 ```
 ┌─────────────────┐
 │  Load Balancer  │ (AWS ALB, Nginx, HAProxy)
@@ -48,6 +51,7 @@ Single FastAPI instance: ~500-1,000 req/sec
 ```
 
 #### Implementation
+
 ```yaml
 # Kubernetes Horizontal Pod Autoscaler
 apiVersion: autoscaling/v2
@@ -62,21 +66,22 @@ spec:
   minReplicas: 3
   maxReplicas: 50
   metrics:
-  - type: Resource
-    resource:
-      name: cpu
-      target:
-        type: Utilization
-        averageUtilization: 70
-  - type: Resource
-    resource:
-      name: memory
-      target:
-        type: Utilization
-        averageUtilization: 80
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70
+    - type: Resource
+      resource:
+        name: memory
+        target:
+          type: Utilization
+          averageUtilization: 80
 ```
 
 #### Scaling Characteristics
+
 - **Linear scaling**: 10 instances = 10,000 req/sec
 - **Stateless**: No session affinity required
 - **Auto-scaling triggers**: CPU > 70%, Memory > 80%, Request queue depth
@@ -84,6 +89,7 @@ spec:
 - **Scale-down cooldown**: 5 minutes
 
 #### Cost per Instance
+
 - **Small instance** (2 vCPU, 4GB RAM): $50-75/month
 - **10 instances**: $500-750/month
 
@@ -92,7 +98,9 @@ spec:
 ### 2. Neo4j Graph Database
 
 #### Current Bottleneck
-Single Neo4j instance: 
+
+Single Neo4j instance:
+
 - 10K reads/sec
 - 1K writes/sec
 - Max efficient graph size: ~10M nodes
@@ -123,12 +131,15 @@ Single Neo4j instance:
 ```
 
 #### Scaling Strategy
+
 1. **Core Servers (3-5 minimum)**
+
    - Handle all writes via Raft consensus
    - Leader election for high availability
    - Write capacity: ~1K-5K writes/sec
 
 2. **Read Replicas (unlimited)**
+
    - Async replication from cores
    - Handle read-only queries
    - Each replica adds: 10K reads/sec
@@ -143,12 +154,14 @@ Single Neo4j instance:
    ```
 
 #### Vertical Scaling
+
 - **Small**: 4 vCPU, 16GB RAM → 100K nodes
 - **Medium**: 8 vCPU, 32GB RAM → 1M nodes
 - **Large**: 16 vCPU, 64GB RAM → 10M nodes
 - **XLarge**: 32 vCPU, 128GB RAM → 100M+ nodes
 
 #### Performance Optimization
+
 ```cypher
 -- Indexing for fast lookups
 CREATE INDEX tenant_node_idx FOR (n:Node) ON (n.tenant_id, n.id);
@@ -162,27 +175,29 @@ LIMIT 1000
 ```
 
 #### Caching Strategy
+
 ```python
 # Redis cache for hot graphs
 def get_graph_with_cache(tenant_id: str, filters: dict) -> dict:
     """Cache preprocessed graphs in Redis."""
     cache_key = f"graph:{tenant_id}:{hash(str(filters))}"
-    
+
     # Try cache first
     cached = redis_client.get(cache_key)
     if cached:
         return json.loads(cached)
-    
+
     # Query Neo4j
     graph_data = fetch_graph_from_neo4j(tenant_id, filters)
-    
+
     # Cache for 5 minutes
     redis_client.setex(cache_key, 300, json.dumps(graph_data))
-    
+
     return graph_data
 ```
 
 #### Cost
+
 - **Core cluster (3 cores)**: $600-1,200/month
 - **Read replica**: $200-400/month each
 - **Enterprise license**: $15K-30K/year
@@ -194,6 +209,7 @@ def get_graph_with_cache(tenant_id: str, filters: dict) -> dict:
 ### 3. Apache Kafka (Streaming Data)
 
 #### Current Bottleneck
+
 Single broker: ~10K messages/sec
 
 #### Horizontal Scaling Approach
@@ -217,6 +233,7 @@ Single broker: ~10K messages/sec
 ```
 
 #### Partitioning Strategy
+
 ```python
 # Partition by tenant_id for parallelism
 def produce_message(tenant_id: str, data: dict):
@@ -232,12 +249,14 @@ def produce_message(tenant_id: str, data: dict):
 ```
 
 #### Scaling Characteristics
+
 - **Throughput**: 100K+ messages/sec per broker
 - **Partitions**: One consumer per partition (max parallelism)
 - **Replication**: 3x for durability
 - **Retention**: 7 days default (configurable)
 
 #### Performance Tuning
+
 ```properties
 # Kafka broker configuration
 num.network.threads=8
@@ -250,6 +269,7 @@ compression.type=snappy
 ```
 
 #### Cost
+
 - **3-broker cluster**: $600-900/month
 - **Per additional broker**: $200-300/month
 - **100K events/sec capacity**: 5-6 brokers = $1,200-1,800/month
@@ -259,9 +279,11 @@ compression.type=snappy
 ### 4. PostgreSQL (Licenses & Metadata)
 
 #### Current Bottleneck
+
 Single instance: 5K-10K queries/sec
 
 #### Vertical Scaling (Primary Strategy)
+
 ```
 ┌─────────────────────────────────────┐
 │       PostgreSQL Primary            │
@@ -279,6 +301,7 @@ Single instance: 5K-10K queries/sec
 ```
 
 #### Read Scaling with Replicas
+
 ```python
 # Read routing
 def query_database(sql: str, is_write: bool = False):
@@ -292,6 +315,7 @@ def query_database(sql: str, is_write: bool = False):
 ```
 
 #### Connection Pooling
+
 ```python
 # PgBouncer for connection pooling
 # 1000s of app connections → 100 DB connections
@@ -302,6 +326,7 @@ SQLALCHEMY_POOL_PRE_PING = True
 ```
 
 #### Partitioning for Large Datasets
+
 ```sql
 -- Partition audit logs by month
 CREATE TABLE audit_logs (
@@ -323,6 +348,7 @@ CREATE TABLE datasets (
 ```
 
 #### Cost
+
 - **Primary** (16 vCPU, 64GB): $400-600/month
 - **Read replica**: $200-300/month each
 - **For 10K users**: 1 primary + 2 replicas = $800-1,200/month
@@ -351,22 +377,25 @@ CREATE TABLE datasets (
 ```
 
 #### Sharding Strategy
+
 ```javascript
 // Shard on account_id (tenant isolation)
-sh.shardCollection("ona.graphs", { "account_id": "hashed" })
+sh.shardCollection("ona.graphs", { account_id: "hashed" });
 
 // Create indexes
-db.graphs.createIndex({ "account_id": 1, "created_at": -1 })
-db.graphs.createIndex({ "account_id": 1, "node_count": 1 })
+db.graphs.createIndex({ account_id: 1, created_at: -1 });
+db.graphs.createIndex({ account_id: 1, node_count: 1 });
 ```
 
 #### Scaling Characteristics
+
 - **Linear scaling**: 3 shards = 3x capacity
 - **Auto-balancing**: Chunks migrate automatically
 - **Each shard**: 100GB-1TB optimal
 - **Read/write distribution**: Parallel across shards
 
 #### Cost
+
 - **3-shard cluster** (9 nodes total): $900-1,500/month
 - **Per additional shard**: $300-500/month
 
@@ -391,6 +420,7 @@ db.graphs.createIndex({ "account_id": 1, "node_count": 1 })
 ```
 
 #### Cache Strategies
+
 ```python
 # 1. Graph data caching (hot data)
 def cache_graph(tenant_id: str, graph_data: dict, ttl: int = 300):
@@ -413,24 +443,26 @@ def check_rate_limit(api_key: str, tier: str) -> bool:
         "professional": 1000,
         "enterprise": None  # Unlimited
     }
-    
+
     if limits[tier] is None:
         return True
-    
+
     key = f"ratelimit:{api_key}"
     count = redis_client.incr(key)
     if count == 1:
         redis_client.expire(key, 60)
-    
+
     return count <= limits[tier]
 ```
 
 #### Scaling Characteristics
+
 - **Throughput**: 100K+ ops/sec per master
 - **Memory**: 2-64GB per node
 - **Replication**: 1-5 replicas per master
 
 #### Cost
+
 - **3-master cluster** (6 nodes): $300-600/month
 - **High-memory** (64GB): $500-800/month per node
 
@@ -456,6 +488,7 @@ Analytics  Analytics   Analytics   Analytics
 ```
 
 #### Worker Specialization
+
 ```python
 # Separate queues for different task types
 @celery.task(queue='analytics')
@@ -477,6 +510,7 @@ def generate_pdf_report(tenant_id: str):
 ```
 
 #### Auto-scaling Configuration
+
 ```yaml
 # Kubernetes autoscaling for Celery workers
 apiVersion: autoscaling/v2
@@ -490,16 +524,17 @@ spec:
   minReplicas: 5
   maxReplicas: 100
   metrics:
-  - type: External
-    external:
-      metric:
-        name: redis_queue_length
-      target:
-        type: Value
-        value: "100"  # Scale when queue > 100 tasks
+    - type: External
+      external:
+        metric:
+          name: redis_queue_length
+        target:
+          type: Value
+          value: "100" # Scale when queue > 100 tasks
 ```
 
 #### Cost
+
 - **Worker instance** (4 vCPU, 8GB): $100-150/month
 - **10 workers**: $1,000-1,500/month
 - **Scales to 100+** during high load
@@ -509,7 +544,9 @@ spec:
 ## 🚀 Real-World Scaling Scenarios
 
 ### Scenario 1: Small Deployment (100 users)
+
 **Infrastructure:**
+
 - 2 API Gateway instances: $100-150/month
 - 1 Neo4j single instance: $300-400/month
 - 1 PostgreSQL instance: $200-300/month
@@ -520,6 +557,7 @@ spec:
 **Total: ~$1,000-1,500/month**
 
 **Performance:**
+
 - 200-400 concurrent users
 - 100K-200K nodes per graph
 - 500-1,000 req/sec
@@ -527,7 +565,9 @@ spec:
 ---
 
 ### Scenario 2: Medium Deployment (5,000 users)
+
 **Infrastructure:**
+
 - 10 API Gateway instances: $500-750/month
 - Neo4j cluster (3 cores + 2 replicas): $1,500-2,500/month
 - PostgreSQL (1 primary + 2 replicas): $800-1,200/month
@@ -539,6 +579,7 @@ spec:
 **Total: ~$5,600-9,000/month**
 
 **Performance:**
+
 - 5,000-10,000 concurrent users
 - 1M-10M nodes per graph
 - 5,000-10,000 req/sec
@@ -547,7 +588,9 @@ spec:
 ---
 
 ### Scenario 3: Enterprise Deployment (50,000+ users)
+
 **Infrastructure:**
+
 - 50 API Gateway instances: $2,500-3,750/month
 - Neo4j cluster (5 cores + 10 replicas): $6,000-9,000/month
 - PostgreSQL (1 primary + 5 replicas): $2,000-3,000/month
@@ -560,6 +603,7 @@ spec:
 **Total: ~$22,500-35,000/month**
 
 **Performance:**
+
 - 50,000+ concurrent users
 - 100M+ nodes per graph
 - 50,000+ req/sec
@@ -570,16 +614,19 @@ spec:
 ## ⚡ Performance Bottlenecks & Solutions
 
 ### Bottleneck 1: Large Graph Rendering
+
 **Problem**: React browser crashes with 50K+ nodes
 
 **Solutions:**
+
 1. **Server-side simplification**
+
    ```python
    def simplify_graph_for_viz(graph: nx.Graph, max_nodes: int = 5000):
        """Reduce graph size for visualization."""
        if graph.number_of_nodes() <= max_nodes:
            return graph
-       
+
        # Keep highest degree nodes
        centrality = nx.degree_centrality(graph)
        top_nodes = sorted(centrality, key=centrality.get, reverse=True)[:max_nodes]
@@ -587,12 +634,13 @@ spec:
    ```
 
 2. **Progressive loading**
+
    ```typescript
    // Load graph in chunks
    const loadGraphInChunks = async (graphId: string) => {
      const chunk1 = await api.fetchNodes(graphId, 0, 1000);
      renderGraph(chunk1);
-     
+
      const chunk2 = await api.fetchNodes(graphId, 1000, 2000);
      updateGraph(chunk2);
    };
@@ -605,16 +653,19 @@ spec:
 ---
 
 ### Bottleneck 2: Neo4j Query Performance
+
 **Problem**: Complex graph traversals timeout
 
 **Solutions:**
+
 1. **Query optimization**
+
    ```cypher
    // ❌ SLOW: No index usage
    MATCH (n)-[r*1..5]-(m)
    WHERE n.tenant_id = $tenant_id
    RETURN n, r, m
-   
+
    // ✅ FAST: Use indexes, limit depth
    MATCH (n:Node {tenant_id: $tenant_id})
    WHERE n.id IN $node_ids
@@ -624,6 +675,7 @@ spec:
    ```
 
 2. **Denormalization**
+
    ```cypher
    // Store precomputed metrics on nodes
    MATCH (n:Node {tenant_id: $tenant_id})
@@ -643,7 +695,7 @@ spec:
        })
        if cached:
            return cached["data"]
-       
+
        # Query Neo4j, cache result
        data = query_neo4j_neighborhood(node_id, tenant_id)
        mongo.graphs.insert_one({
@@ -659,10 +711,13 @@ spec:
 ---
 
 ### Bottleneck 3: Kafka Consumer Lag
+
 **Problem**: Streaming events pile up, lag increases
 
 **Solutions:**
+
 1. **Scale consumers to match partitions**
+
    ```python
    # 12 partitions → 12 consumers max
    # Scale consumer group instances
@@ -671,6 +726,7 @@ spec:
    ```
 
 2. **Batch processing**
+
    ```python
    def consume_batch(consumer, batch_size=100):
        """Process messages in batches."""
@@ -679,7 +735,7 @@ spec:
            msg = consumer.poll(timeout=0.1)
            if msg:
                messages.append(msg)
-       
+
        # Bulk insert to Neo4j
        if messages:
            bulk_insert_edges(messages)
@@ -699,21 +755,22 @@ spec:
 ## 📊 Load Testing Strategy
 
 ### Load Test 1: API Gateway Stress Test
+
 ```python
 # Using Locust
 from locust import HttpUser, task, between
 
 class ONAUser(HttpUser):
     wait_time = between(1, 3)
-    
+
     @task(3)
     def get_graph(self):
         self.client.get("/api/v1/graph/nodes?tenant_id=test")
-    
+
     @task(2)
     def get_analytics(self):
         self.client.get("/api/v1/graph/metrics?tenant_id=test")
-    
+
     @task(1)
     def upload_data(self):
         self.client.post("/api/v1/data/upload", files={"file": ...})
@@ -722,6 +779,7 @@ class ONAUser(HttpUser):
 ```
 
 ### Load Test 2: Neo4j Throughput Test
+
 ```python
 import neo4j
 import concurrent.futures
@@ -733,11 +791,12 @@ def benchmark_neo4j(num_queries=10000):
             for i in range(num_queries)
         ]
         results = [f.result() for f in futures]
-    
+
     print(f"Queries/sec: {num_queries / elapsed_time}")
 ```
 
 ### Load Test 3: Kafka Throughput Test
+
 ```bash
 # Producer performance test
 kafka-producer-perf-test.sh \
@@ -762,24 +821,28 @@ kafka-consumer-perf-test.sh \
 ### Key Metrics to Track
 
 #### Application Metrics
+
 - API response time (p50, p95, p99)
 - Requests per second
 - Error rate (4xx, 5xx)
 - Cache hit rate
 
 #### Database Metrics
+
 - Neo4j query latency
 - PostgreSQL connection pool utilization
 - MongoDB shard distribution
 - Redis memory usage
 
 #### Infrastructure Metrics
+
 - CPU utilization (per service)
 - Memory usage
 - Network throughput
 - Disk I/O
 
 ### Alerting Thresholds
+
 ```yaml
 # Prometheus alert rules
 groups:
@@ -788,15 +851,15 @@ groups:
       - alert: HighAPILatency
         expr: histogram_quantile(0.95, http_request_duration_seconds) > 2
         for: 5m
-        
+
       - alert: Neo4jSlowQueries
         expr: neo4j_cypher_query_duration_seconds > 10
         for: 2m
-      
+
       - alert: KafkaConsumerLag
         expr: kafka_consumer_lag > 10000
         for: 5m
-      
+
       - alert: HighCPUUsage
         expr: cpu_usage_percent > 85
         for: 10m
@@ -808,14 +871,14 @@ groups:
 
 ### Cost vs. Users (Monthly)
 
-| Users | Infrastructure | Neo4j | Total |
-|-------|----------------|-------|-------|
-| 100 | $700 | $300 | $1,000 |
-| 1,000 | $2,000 | $800 | $2,800 |
-| 5,000 | $4,100 | $1,500 | $5,600 |
-| 10,000 | $6,500 | $2,500 | $9,000 |
-| 50,000 | $16,500 | $6,000 | $22,500 |
-| 100,000 | $28,000 | $10,000 | $38,000 |
+| Users   | Infrastructure | Neo4j   | Total   |
+| ------- | -------------- | ------- | ------- |
+| 100     | $700           | $300    | $1,000  |
+| 1,000   | $2,000         | $800    | $2,800  |
+| 5,000   | $4,100         | $1,500  | $5,600  |
+| 10,000  | $6,500         | $2,500  | $9,000  |
+| 50,000  | $16,500        | $6,000  | $22,500 |
+| 100,000 | $28,000        | $10,000 | $38,000 |
 
 ### Cost Optimization Strategies
 
@@ -830,6 +893,7 @@ groups:
 ## ✅ Scalability Checklist
 
 ### Before Going to Production
+
 - [ ] Load test to 2x expected peak traffic
 - [ ] Configure auto-scaling for all services
 - [ ] Set up monitoring and alerting
@@ -841,6 +905,7 @@ groups:
 - [ ] Set up cost monitoring and budgets
 
 ### Post-Launch Monitoring
+
 - [ ] Track growth metrics weekly
 - [ ] Review performance dashboards daily
 - [ ] Analyze slow queries monthly
@@ -858,9 +923,10 @@ The ONA Platform architecture is designed for **horizontal scalability** across 
 ✅ **No single points of failure**: All services clustered  
 ✅ **Auto-scaling**: Responds to load automatically  
 ✅ **Multi-tenant efficient**: Isolated but shared infrastructure  
-✅ **Cost-effective**: Pay only for what you use  
+✅ **Cost-effective**: Pay only for what you use
 
 ### Growth Path
+
 ```
    100 users → 1K users → 10K users → 100K users
       ↓           ↓           ↓            ↓

@@ -44,6 +44,7 @@ git commit -m "Initial commit: ONA Platform v2.0 planning and architecture"
 ### 2. Create Repository on GitHub
 
 **Option A: Via GitHub Website**
+
 1. Go to https://github.com/new
 2. Repository name: `ONA-Platform` (or your preferred name)
 3. Description: `Organizational Network Analysis Platform v2.0 - React + FastAPI with Neo4j`
@@ -52,6 +53,7 @@ git commit -m "Initial commit: ONA Platform v2.0 planning and architecture"
 6. Click "Create repository"
 
 **Option B: Via GitHub CLI** (if installed)
+
 ```powershell
 # Install GitHub CLI first if needed: winget install GitHub.cli
 
@@ -85,6 +87,7 @@ After pushing, configure your repository on GitHub:
 Go to: `Settings` → `General`
 
 **Features to enable:**
+
 - ✅ Issues
 - ✅ Projects (for project management)
 - ✅ Wiki (optional)
@@ -95,6 +98,7 @@ Go to: `Settings` → `General`
 Go to: `Settings` → `Branches` → `Add rule`
 
 **For `main` branch:**
+
 - ✅ Require a pull request before merging
 - ✅ Require approvals (1-2 reviewers)
 - ✅ Require status checks to pass
@@ -106,6 +110,7 @@ Go to: `Settings` → `Branches` → `Add rule`
 Go to repository main page → Click ⚙️ (gear icon) next to "About"
 
 **Suggested topics:**
+
 - `organizational-network-analysis`
 - `react`
 - `fastapi`
@@ -117,6 +122,7 @@ Go to repository main page → Click ⚙️ (gear icon) next to "About"
 - `social-network-analysis`
 
 **Add description:**
+
 ```
 Organizational Network Analysis Platform v2.0 - Modern React + FastAPI application with Neo4j graph database, multi-source data ingestion, and horizontal scalability
 ```
@@ -128,6 +134,7 @@ Organizational Network Analysis Platform v2.0 - Modern React + FastAPI applicati
 Go to: `Issues` → `Labels`
 
 **Suggested labels:**
+
 - `phase-1`, `phase-2`, ... `phase-10` (for development phases)
 - `backend`, `frontend`, `database`, `infrastructure`
 - `license-demo`, `license-basic`, `license-pro`, `license-enterprise`
@@ -167,6 +174,7 @@ Go to: `Settings` → `Collaborators and teams`
 Go to: `Settings` → `Security & analysis`
 
 Enable:
+
 - ✅ Dependency graph
 - ✅ Dependabot alerts
 - ✅ Dependabot security updates
@@ -175,6 +183,7 @@ Enable:
 ### 2. Add .env to .gitignore (already done)
 
 Verify `.env` is in `.gitignore`:
+
 ```bash
 # Check if .env is ignored
 git check-ignore -v .env
@@ -183,6 +192,7 @@ git check-ignore -v .env
 ### 3. Never Commit Secrets
 
 **Before committing, always check:**
+
 ```powershell
 # View what will be committed
 git status
@@ -201,8 +211,9 @@ Select-String -Pattern "password|secret|key|token" -Path * -Exclude .gitignore,.
 Create `.github/workflows/` directory for automated testing (can be done later in Phase 1).
 
 Example workflows to add later:
+
 - `backend-tests.yml` - Python tests
-- `frontend-tests.yml` - React tests  
+- `frontend-tests.yml` - React tests
 - `security-scan.yml` - Dependency scanning
 - `deploy.yml` - Deployment automation
 
@@ -213,7 +224,7 @@ Example workflows to add later:
 1. **Share repository link** with team/stakeholders
 2. **Create first issue**: "Phase 1: Foundation & Setup"
 3. **Create project board**: Map development plan to GitHub Projects
-4. **Set up development branches**: 
+4. **Set up development branches**:
    ```powershell
    git checkout -b develop
    git push -u origin develop
@@ -262,12 +273,15 @@ git merge main
 ## 🆘 Troubleshooting
 
 ### "Authentication failed"
+
 Use GitHub Personal Access Token instead of password:
+
 1. Go to GitHub → Settings → Developer settings → Personal access tokens → Tokens (classic)
 2. Generate new token with `repo` permissions
 3. Use token as password when pushing
 
 Or use SSH instead:
+
 ```powershell
 # Generate SSH key
 ssh-keygen -t ed25519 -C "your_email@example.com"
@@ -278,13 +292,16 @@ git remote set-url origin git@github.com:YOUR-USERNAME/ONA-Platform.git
 ```
 
 ### "Remote already exists"
+
 ```powershell
 git remote remove origin
 git remote add origin https://github.com/YOUR-USERNAME/ONA-Platform.git
 ```
 
 ### Large files issue
+
 If you accidentally committed large files:
+
 ```powershell
 # Remove from git but keep locally
 git rm --cached large-file.db

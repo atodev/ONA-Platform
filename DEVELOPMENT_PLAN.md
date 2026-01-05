@@ -1,4 +1,5 @@
 # ONA Platform Modernization - Development Plan
+
 ## React.js Frontend with Modern Backend Architecture
 
 ---
@@ -8,7 +9,9 @@
 Modernization of the existing Streamlit-based Organizational Network Analysis (ONA) application into a scalable, enterprise-grade platform using React.js for the frontend and a microservices-based backend architecture.
 
 ### Current Application Overview
+
 The existing Streamlit application provides:
+
 - CSV dataset upload and processing
 - Network visualization using PyVis
 - Sankey diagrams for flow analysis
@@ -22,10 +25,11 @@ The existing Streamlit application provides:
 ## Technology Stack
 
 ### Frontend
+
 - **Framework**: React 18+ with TypeScript
 - **State Management**: Redux Toolkit + RTK Query
 - **UI Components**: Material-UI (MUI) v5 or Ant Design
-- **Visualization**: 
+- **Visualization**:
   - **react-force-graph-2d** (primary 2D network visualization)
   - **react-force-graph-3d** (primary 3D network visualization)
   - Recharts/Victory for charts and time series
@@ -36,6 +40,7 @@ The existing Streamlit application provides:
 - **Code Quality**: ESLint, Prettier, Husky
 
 ### Backend
+
 - **API Gateway**: FastAPI (Python) - functional/modular design (no classes)
 - **Microservices** (Python modules only):
   - **Data Ingestion Service** - Multi-source data connectors:
@@ -49,7 +54,7 @@ The existing Streamlit application provides:
   - **Tenant Isolation Service** - Multi-tenant data segregation by account
   - **Visualization Service** - Graph preprocessing for react-force-graph
   - **License Management Service** - Key validation and feature gating
-- **Database**: 
+- **Database**:
   - **Neo4j** (primary graph database for customer data)
   - **PostgreSQL** (tenant management, licensing, metadata)
   - **MongoDB** (document store for preprocessed graph data)
@@ -60,6 +65,7 @@ The existing Streamlit application provides:
 - **API Documentation**: OpenAPI/Swagger
 
 ### Infrastructure & DevOps
+
 - **Containerization**: Docker + Docker Compose
 - **Orchestration**: Kubernetes (production) / Docker Swarm (staging)
 - **CI/CD**: GitHub Actions or GitLab CI
@@ -128,6 +134,7 @@ The existing Streamlit application provides:
 ### **Phase 1: Foundation & Setup** (Weeks 1-2)
 
 #### Milestone 1.1: Project Initialization
+
 - [ ] Set up monorepo structure (Nx/Turborepo or Lerna)
 - [ ] Initialize frontend React + TypeScript project with Vite
 - [ ] Set up backend FastAPI project structure
@@ -137,6 +144,7 @@ The existing Streamlit application provides:
 - [ ] Set up CI/CD pipeline basics
 
 #### Milestone 1.2: Development Environment
+
 - [ ] Configure ESLint, Prettier, and pre-commit hooks
 - [ ] Set up database containers (PostgreSQL, MongoDB, Redis)
 - [ ] Configure environment variables management
@@ -145,6 +153,7 @@ The existing Streamlit application provides:
 - [ ] Set up API documentation framework (Swagger/OpenAPI)
 
 #### Milestone 1.3: License Management & Authentication Framework
+
 - [ ] Design license key schema (tiers: Demo, Basic, Professional, Enterprise)
 - [ ] Implement API key generation and validation
 - [ ] Create license key activation endpoints
@@ -161,6 +170,7 @@ The existing Streamlit application provides:
 ### **Phase 2: Core Backend Services** (Weeks 3-5)
 
 #### Milestone 2.1: API Gateway & Routing
+
 - [ ] Design RESTful API structure
 - [ ] Implement API gateway with FastAPI
 - [ ] Set up rate limiting and throttling
@@ -170,6 +180,7 @@ The existing Streamlit application provides:
 - [ ] Set up health check endpoints
 
 #### Milestone 2.2: Data Ingestion Service (Multi-Source Connectors)
+
 - [ ] **Neo4j Connector Module**:
   - [ ] Implement Cypher query builder
   - [ ] Create graph extraction functions
@@ -201,6 +212,7 @@ The existing Streamlit application provides:
 - [ ] Unit tests for all ingestion modules (85%+ coverage)
 
 #### Milestone 2.3: Data Processing Service
+
 - [ ] Create data transformation pipeline (module-based)
 - [ ] Implement trust score filtering functionality
 - [ ] Implement feature selection logic
@@ -211,6 +223,7 @@ The existing Streamlit application provides:
 - [ ] Unit tests for data processing (80%+ coverage)
 
 #### Milestone 2.4: Graph Analytics Service (Python Modules Only)
+
 - [ ] Create modular graph analytics functions (no classes):
   - [ ] `graph_builder.py` - NetworkX graph construction from multiple sources
   - [ ] `metrics_calculator.py` - Node/edge counting, density, clustering
@@ -226,6 +239,7 @@ The existing Streamlit application provides:
 - [ ] Unit and integration tests for all modules
 
 #### Milestone 2.5: Database Models & Multi-Tenant Architecture
+
 - [ ] **Neo4j Graph Database**:
   - [ ] Design multi-tenant graph schema with labels
   - [ ] Create indexes for performance (account_id, node_id)
@@ -251,6 +265,7 @@ The existing Streamlit application provides:
 ### **Phase 3: Frontend Foundation** (Weeks 4-6)
 
 #### Milestone 3.1: UI Component Library
+
 - [ ] Set up Material-UI theme and customization
 - [ ] Create base components:
   - [ ] Layout (Header, Sidebar, Footer)
@@ -263,6 +278,7 @@ The existing Streamlit application provides:
 - [ ] Create component documentation (Storybook)
 
 #### Milestone 3.2: State Management
+
 - [ ] Configure Redux Toolkit store
 - [ ] Set up RTK Query for API integration
 - [ ] Create feature slices:
@@ -275,6 +291,7 @@ The existing Streamlit application provides:
 - [ ] Add error handling and retry logic
 
 #### Milestone 3.3: Routing & Navigation
+
 - [ ] Set up React Router v6
 - [ ] Create route structure:
   - [ ] `/` - Landing page with demo/license activation
@@ -293,6 +310,7 @@ The existing Streamlit application provides:
 ### **Phase 4: Core Features - Data Management** (Weeks 7-9)
 
 #### Milestone 4.1: Multi-Source Data Input & Management
+
 - [ ] **File Upload Interface**:
   - [ ] Drag-and-drop for CSV/JSON/GraphML/GEXF files
   - [ ] Upload progress indicators
@@ -319,6 +337,7 @@ The existing Streamlit application provides:
   - [ ] Data export to multiple formats
 
 #### Milestone 4.2: Data Filtering & Selection
+
 - [ ] Build trust score slider component
 - [ ] Create feature selection dropdowns
 - [ ] Implement multi-select for items
@@ -329,6 +348,7 @@ The existing Streamlit application provides:
 - [ ] Implement filter state persistence
 
 #### Milestone 4.3: Data Table View
+
 - [ ] Create virtualized data table component
 - [ ] Add sorting and pagination
 - [ ] Implement column selection and reordering
@@ -342,6 +362,7 @@ The existing Streamlit application provides:
 ### **Phase 5: Network Visualization** (Weeks 10-12)
 
 #### Milestone 5.1: Interactive Network Graph (react-force-graph)
+
 - [ ] **2D Visualization (react-force-graph-2d)**:
   - [ ] Integrate react-force-graph-2d component
   - [ ] Configure force simulation parameters (charge, link distance)
@@ -369,6 +390,7 @@ The existing Streamlit application provides:
   - [ ] Licensed: Full graph rendering, no limits
 
 #### Milestone 5.2: Graph Controls & Configuration
+
 - [ ] Create physics simulation controls
 - [ ] Build layout algorithm selector (force, hierarchical, circular)
 - [ ] Add node sizing options
@@ -379,6 +401,7 @@ The existing Streamlit application provides:
 - [ ] Create full-screen mode
 
 #### Milestone 5.3: Graph Analytics Panel
+
 - [ ] Display real-time graph metrics
 - [ ] Create metrics visualization:
   - [ ] Nodes and edges count
@@ -395,6 +418,7 @@ The existing Streamlit application provides:
 ### **Phase 6: Advanced Visualizations** (Weeks 13-15)
 
 #### Milestone 6.1: Sankey Diagram
+
 - [ ] Integrate React-Flow or D3 Sankey
 - [ ] Build relationship flow visualization
 - [ ] Add interactive node hover details
@@ -404,6 +428,7 @@ The existing Streamlit application provides:
 - [ ] Optimize for performance
 
 #### Milestone 6.2: Time Series Analysis
+
 - [ ] Build time series chart components
 - [ ] Create monthly activity visualization
 - [ ] Add day-of-week heatmap
@@ -414,6 +439,7 @@ The existing Streamlit application provides:
 - [ ] Add trend analysis overlay
 
 #### Milestone 6.3: Additional Visualizations
+
 - [ ] Create correlation matrix heatmap
 - [ ] Build hierarchical tree view
 - [ ] Add community detection visualization
@@ -426,6 +452,7 @@ The existing Streamlit application provides:
 ### **Phase 7: Advanced Features** (Weeks 16-18)
 
 #### Milestone 7.1: Vendor Streaming & Batch Integration
+
 - [ ] **Kafka Integration**:
   - [ ] Kafka cluster setup and configuration
   - [ ] Consumer group management per tenant
@@ -451,6 +478,7 @@ The existing Streamlit application provides:
   - [ ] Vendor connection health checks
 
 #### Milestone 7.2: Real-time Collaboration
+
 - [ ] Implement WebSocket connection
 - [ ] Add multi-user session support
 - [ ] Create live cursor tracking
@@ -460,6 +488,7 @@ The existing Streamlit application provides:
 - [ ] Create activity feed
 
 #### Milestone 7.3: Reports & Export
+
 - [ ] Design report templates
 - [ ] Build PDF report generation
 - [ ] Create PowerPoint export
@@ -469,6 +498,7 @@ The existing Streamlit application provides:
 - [ ] Add report history and versioning
 
 #### Milestone 7.4: Admin Panel & License Management
+
 - [ ] Create user management interface
 - [ ] Build role-based access control (RBAC)
 - [ ] Add system settings configuration
@@ -482,6 +512,7 @@ The existing Streamlit application provides:
 ### **Phase 8: Performance & Optimization** (Weeks 19-20)
 
 #### Milestone 8.1: Frontend Optimization
+
 - [ ] Implement code splitting and lazy loading
 - [ ] Optimize bundle size (< 200KB initial)
 - [ ] Add service worker for offline support
@@ -491,6 +522,7 @@ The existing Streamlit application provides:
 - [ ] Implement virtual scrolling for large lists
 
 #### Milestone 8.2: Backend Optimization
+
 - [ ] Profile and optimize database queries
 - [ ] Implement query result caching
 - [ ] Add database connection pooling
@@ -501,6 +533,7 @@ The existing Streamlit application provides:
 - [ ] Optimize file upload handling
 
 #### Milestone 8.3: Infrastructure Optimization
+
 - [ ] Set up CDN for static assets
 - [ ] Implement load balancing
 - [ ] Add auto-scaling configuration
@@ -514,6 +547,7 @@ The existing Streamlit application provides:
 ### **Phase 9: Testing & Quality Assurance** (Weeks 21-22)
 
 #### Milestone 9.1: Frontend Testing
+
 - [ ] Unit tests for components (80%+ coverage)
 - [ ] Integration tests for Redux slices
 - [ ] E2E tests with Playwright/Cypress:
@@ -527,6 +561,7 @@ The existing Streamlit application provides:
 - [ ] Performance testing
 
 #### Milestone 9.2: Backend Testing
+
 - [ ] Unit tests for services (85%+ coverage)
 - [ ] Integration tests for API endpoints
 - [ ] Load testing (Apache JMeter/Locust)
@@ -536,6 +571,7 @@ The existing Streamlit application provides:
 - [ ] Disaster recovery testing
 
 #### Milestone 9.3: User Acceptance Testing
+
 - [ ] Create UAT test scenarios
 - [ ] Conduct stakeholder demos
 - [ ] Gather and document feedback
@@ -548,6 +584,7 @@ The existing Streamlit application provides:
 ### **Phase 10: Deployment & Launch** (Weeks 23-24)
 
 #### Milestone 10.1: Production Environment Setup
+
 - [ ] Configure production Kubernetes cluster
 - [ ] Set up production databases with backups
 - [ ] Configure SSL certificates
@@ -557,6 +594,7 @@ The existing Streamlit application provides:
 - [ ] Create deployment runbooks
 
 #### Milestone 10.2: Security Hardening
+
 - [ ] Security audit and penetration testing
 - [ ] Implement rate limiting and DDoS protection
 - [ ] Configure Web Application Firewall (WAF)
@@ -566,6 +604,7 @@ The existing Streamlit application provides:
 - [ ] Create security incident response plan
 
 #### Milestone 10.3: Launch Preparation
+
 - [ ] Create user documentation
 - [ ] Build onboarding tutorials
 - [ ] Prepare marketing materials
@@ -575,6 +614,7 @@ The existing Streamlit application provides:
 - [ ] Conduct soft launch with beta users
 
 #### Milestone 10.4: Go-Live
+
 - [ ] Execute production deployment
 - [ ] Monitor system performance
 - [ ] Conduct post-launch health checks
@@ -588,6 +628,7 @@ The existing Streamlit application provides:
 ## Post-Launch Roadmap (Months 7-12)
 
 ### Phase 11: Enhancements & Maintenance
+
 - [ ] Gather user feedback and analytics
 - [ ] Implement feature requests based on priority
 - [ ] Regular security updates and patches
@@ -604,25 +645,26 @@ The existing Streamlit application provides:
 
 ## Project Timeline
 
-| Phase | Duration | Weeks |
-|-------|----------|-------|
-| Phase 1: Foundation & Setup | 2 weeks | 1-2 |
-| Phase 2: Core Backend Services | 3 weeks | 3-5 |
-| Phase 3: Frontend Foundation | 3 weeks | 4-6 |
-| Phase 4: Data Management | 3 weeks | 7-9 |
-| Phase 5: Network Visualization | 3 weeks | 10-12 |
-| Phase 6: Advanced Visualizations | 3 weeks | 13-15 |
-| Phase 7: Advanced Features | 3 weeks | 16-18 |
-| Phase 8: Performance & Optimization | 2 weeks | 19-20 |
-| Phase 9: Testing & QA | 2 weeks | 21-22 |
-| Phase 10: Deployment & Launch | 2 weeks | 23-24 |
-| **Total** | **24 weeks** | **~6 months** |
+| Phase                               | Duration     | Weeks         |
+| ----------------------------------- | ------------ | ------------- |
+| Phase 1: Foundation & Setup         | 2 weeks      | 1-2           |
+| Phase 2: Core Backend Services      | 3 weeks      | 3-5           |
+| Phase 3: Frontend Foundation        | 3 weeks      | 4-6           |
+| Phase 4: Data Management            | 3 weeks      | 7-9           |
+| Phase 5: Network Visualization      | 3 weeks      | 10-12         |
+| Phase 6: Advanced Visualizations    | 3 weeks      | 13-15         |
+| Phase 7: Advanced Features          | 3 weeks      | 16-18         |
+| Phase 8: Performance & Optimization | 2 weeks      | 19-20         |
+| Phase 9: Testing & QA               | 2 weeks      | 21-22         |
+| Phase 10: Deployment & Launch       | 2 weeks      | 23-24         |
+| **Total**                           | **24 weeks** | **~6 months** |
 
 ---
 
 ## Team Structure (Recommended)
 
 ### Core Team
+
 - **1x Tech Lead / Architect** - Overall architecture and technical decisions
 - **2x Senior Full-Stack Developers** - React + Python
 - **1x Frontend Developer** - React/TypeScript specialist
@@ -633,6 +675,7 @@ The existing Streamlit application provides:
 - **1x Product Manager** - Requirements and stakeholder management
 
 ### Extended Team (Part-time)
+
 - Data Scientist - Algorithm optimization
 - Security Specialist - Security audit
 - Technical Writer - Documentation
@@ -642,20 +685,22 @@ The existing Streamlit application provides:
 ## Risk Management
 
 ### Technical Risks
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| Performance issues with large graphs | High | Implement virtualization, server-side rendering, WebGL |
-| Data security concerns | Critical | End-to-end encryption, regular audits, compliance |
-| Scalability bottlenecks | High | Horizontal scaling, caching, CDN, load balancing |
-| Third-party library vulnerabilities | Medium | Regular dependency updates, security scanning |
-| Browser compatibility | Medium | Polyfills, progressive enhancement, testing |
+
+| Risk                                 | Impact   | Mitigation                                             |
+| ------------------------------------ | -------- | ------------------------------------------------------ |
+| Performance issues with large graphs | High     | Implement virtualization, server-side rendering, WebGL |
+| Data security concerns               | Critical | End-to-end encryption, regular audits, compliance      |
+| Scalability bottlenecks              | High     | Horizontal scaling, caching, CDN, load balancing       |
+| Third-party library vulnerabilities  | Medium   | Regular dependency updates, security scanning          |
+| Browser compatibility                | Medium   | Polyfills, progressive enhancement, testing            |
 
 ### Project Risks
-| Risk | Impact | Mitigation |
-|------|--------|------------|
-| Scope creep | High | Strict change management, agile sprints |
-| Resource availability | High | Cross-training, documentation, knowledge sharing |
-| Timeline delays | Medium | Buffer time, MVP approach, parallel development |
+
+| Risk                  | Impact | Mitigation                                         |
+| --------------------- | ------ | -------------------------------------------------- |
+| Scope creep           | High   | Strict change management, agile sprints            |
+| Resource availability | High   | Cross-training, documentation, knowledge sharing   |
+| Timeline delays       | Medium | Buffer time, MVP approach, parallel development    |
 | Stakeholder alignment | Medium | Regular demos, clear communication, feedback loops |
 
 ---
@@ -663,6 +708,7 @@ The existing Streamlit application provides:
 ## Success Metrics
 
 ### Technical KPIs
+
 - **Performance**: Page load < 2s, Time to Interactive < 3s
 - **Reliability**: 99.9% uptime
 - **Scalability**: Support 10,000+ concurrent users
@@ -670,6 +716,7 @@ The existing Streamlit application provides:
 - **Security**: Zero critical vulnerabilities
 
 ### Business KPIs
+
 - **User Adoption**: 80% of current Streamlit users migrate
 - **User Satisfaction**: NPS > 50
 - **Performance**: 50% faster than current system
@@ -681,6 +728,7 @@ The existing Streamlit application provides:
 ## Budget Estimate (High-Level)
 
 ### Development Costs (6 months)
+
 - Team salaries: $400,000 - $600,000
 - Infrastructure (dev/staging/prod): $5,000 - $10,000
 - Third-party services and APIs: $2,000 - $5,000
@@ -688,6 +736,7 @@ The existing Streamlit application provides:
 - **Total Development**: ~$410,000 - $620,000
 
 ### Ongoing Costs (Annual)
+
 - Infrastructure and hosting: $30,000 - $60,000 (includes Neo4j cluster, Kafka)
 - Maintenance and support: $100,000 - $150,000
 - Monitoring and observability: $5,000 - $10,000
@@ -700,6 +749,7 @@ The existing Streamlit application provides:
 ## Technology Decision Rationale
 
 ### Why React.js?
+
 - Industry standard with massive ecosystem
 - Component reusability and maintainability
 - Strong TypeScript support
@@ -707,6 +757,7 @@ The existing Streamlit application provides:
 - Large talent pool
 
 ### Why react-force-graph-2d/3d?
+
 - **WebGL-accelerated** rendering for high performance (10K+ nodes)
 - Built on Three.js/D3.js for robust graph visualization
 - Native support for force-directed layouts
@@ -716,6 +767,7 @@ The existing Streamlit application provides:
 - Better performance than DOM-based solutions (Vis.js, Cytoscape.js)
 
 ### Why FastAPI (Python Backend with Modules)?
+
 - Leverages existing Python data science stack
 - High performance (async/await)
 - Automatic API documentation
@@ -725,6 +777,7 @@ The existing Streamlit application provides:
 - Functional programming paradigm fits data processing workflows
 
 ### Why Neo4j?
+
 - **Native graph database** - optimized for graph traversals
 - Cypher query language - intuitive and powerful
 - Built-in graph algorithms library
@@ -734,6 +787,7 @@ The existing Streamlit application provides:
 - Industry standard for graph data
 
 ### Why Microservices?
+
 - Independent scaling of compute-intensive services
 - Better fault isolation
 - Technology flexibility per service
@@ -741,6 +795,7 @@ The existing Streamlit application provides:
 - Supports multiple data source connectors
 
 ### Why Multi-Database Strategy?
+
 - **Neo4j**: Native graph storage and queries, multi-tenant isolation
 - **PostgreSQL**: Relational data (licenses, accounts), ACID compliance
 - **MongoDB**: Fast document queries for preprocessed graph data
@@ -748,6 +803,7 @@ The existing Streamlit application provides:
 - Each database optimized for its use case
 
 ### Why Apache Kafka?
+
 - **High-throughput** streaming data ingestion
 - Durable message storage (replay capability)
 - Horizontal scalability
@@ -756,6 +812,7 @@ The existing Streamlit application provides:
 - Support for exactly-once semantics
 
 ### Why API Key-based Licensing?
+
 - **Simpler than OAuth** for B2B SaaS model
 - Easy integration for customers
 - Fine-grained feature control by tier
@@ -768,6 +825,7 @@ The existing Streamlit application provides:
 ## Python Module-Based Architecture Pattern
 
 ### Design Principles (No Classes)
+
 The backend will follow a **functional, module-based architecture** instead of object-oriented class-based design:
 
 ```python
@@ -775,7 +833,7 @@ The backend will follow a **functional, module-based architecture** instead of o
 class GraphAnalyzer:
     def __init__(self, graph):
         self.graph = graph
-    
+
     def calculate_metrics(self):
         return self._internal_method()
 
@@ -845,6 +903,7 @@ backend/
 ### Example Module Patterns
 
 #### Neo4j Connector Module
+
 ```python
 # services/ingestion/neo4j_connector.py
 from neo4j import GraphDatabase
@@ -880,6 +939,7 @@ def write_graph_to_neo4j(driver, tenant_id: str, edges: List[Dict]) -> int:
 ```
 
 #### Graph Analytics Module
+
 ```python
 # services/analytics/metrics_calculator.py
 import networkx as nx
@@ -905,6 +965,7 @@ def find_connected_components(graph: nx.Graph) -> List[set]:
 ```
 
 #### License Validation Module
+
 ```python
 # services/licensing/key_validator.py
 from typing import Optional, Dict
@@ -915,13 +976,13 @@ def validate_license_key(key: str, db_conn) -> Optional[Dict]:
     """Validate license key and return tier information."""
     # Query license from database
     license_info = db_conn.query_license(key_hash=hashlib.sha256(key.encode()).hexdigest())
-    
+
     if not license_info:
         return None
-    
+
     if license_info['expires_at'] < datetime.utcnow():
         return None
-    
+
     return {
         'tier': license_info['tier'],
         'features': get_features_for_tier(license_info['tier']),
@@ -964,6 +1025,7 @@ def get_features_for_tier(tier: str) -> Dict[str, bool]:
 ```
 
 ### Benefits of Module-Based Approach
+
 1. **Simplicity**: Easier to understand and reason about
 2. **Testability**: Pure functions are easier to unit test
 3. **Composability**: Functions can be easily combined
@@ -976,38 +1038,38 @@ def get_features_for_tier(tier: str) -> Dict[str, bool]:
 
 ## License Tier Feature Matrix
 
-| Feature | Demo (No Key) | Basic | Professional | Enterprise |
-|---------|---------------|-------|--------------|------------|
-| **Data Input** |
-| Sample datasets | ✅ Read-only | ✅ | ✅ | ✅ |
-| CSV/JSON upload | ❌ | ✅ (500 MB) | ✅ (5 GB) | ✅ Unlimited |
-| Neo4j connection | ❌ | ✅ | ✅ | ✅ |
-| Relational DB connection | ❌ | ❌ | ✅ | ✅ |
-| Streaming (Kafka) | ❌ | ❌ | ✅ | ✅ |
-| **Visualization** |
-| 2D network graph | ✅ (100 nodes max) | ✅ (5K nodes) | ✅ (50K nodes) | ✅ Unlimited |
-| 3D network graph | ❌ | ✅ | ✅ | ✅ |
-| Time series | ✅ Basic | ✅ | ✅ | ✅ |
-| Sankey diagrams | ✅ | ✅ | ✅ | ✅ |
-| **Analytics** |
-| Basic metrics | ✅ | ✅ | ✅ | ✅ |
-| Centrality measures | ❌ | ✅ | ✅ | ✅ |
-| Community detection | ❌ | ❌ | ✅ | ✅ |
-| Path analysis | ❌ | ✅ Limited | ✅ | ✅ |
-| **Export & Sharing** |
-| Export graph (PNG) | ❌ | ✅ | ✅ | ✅ |
-| Export data (CSV) | ❌ | ✅ | ✅ | ✅ |
-| PDF reports | ❌ | ❌ | ✅ | ✅ |
-| API access | ❌ | Read-only | Full | Full + webhooks |
-| **Collaboration** |
-| Users per account | 1 | 5 | 25 | Unlimited |
-| Real-time collaboration | ❌ | ❌ | ✅ | ✅ |
-| **Storage & Limits** |
-| Data storage | N/A | 10 GB | 100 GB | Unlimited |
-| API calls/month | 100 | 10,000 | 100,000 | Unlimited |
-| **Support** |
-| Support | Community | Email | Priority email | 24/7 + phone |
-| **Pricing** | Free | $99/mo | $499/mo | Custom |
+| Feature                  | Demo (No Key)      | Basic         | Professional   | Enterprise      |
+| ------------------------ | ------------------ | ------------- | -------------- | --------------- |
+| **Data Input**           |
+| Sample datasets          | ✅ Read-only       | ✅            | ✅             | ✅              |
+| CSV/JSON upload          | ❌                 | ✅ (500 MB)   | ✅ (5 GB)      | ✅ Unlimited    |
+| Neo4j connection         | ❌                 | ✅            | ✅             | ✅              |
+| Relational DB connection | ❌                 | ❌            | ✅             | ✅              |
+| Streaming (Kafka)        | ❌                 | ❌            | ✅             | ✅              |
+| **Visualization**        |
+| 2D network graph         | ✅ (100 nodes max) | ✅ (5K nodes) | ✅ (50K nodes) | ✅ Unlimited    |
+| 3D network graph         | ❌                 | ✅            | ✅             | ✅              |
+| Time series              | ✅ Basic           | ✅            | ✅             | ✅              |
+| Sankey diagrams          | ✅                 | ✅            | ✅             | ✅              |
+| **Analytics**            |
+| Basic metrics            | ✅                 | ✅            | ✅             | ✅              |
+| Centrality measures      | ❌                 | ✅            | ✅             | ✅              |
+| Community detection      | ❌                 | ❌            | ✅             | ✅              |
+| Path analysis            | ❌                 | ✅ Limited    | ✅             | ✅              |
+| **Export & Sharing**     |
+| Export graph (PNG)       | ❌                 | ✅            | ✅             | ✅              |
+| Export data (CSV)        | ❌                 | ✅            | ✅             | ✅              |
+| PDF reports              | ❌                 | ❌            | ✅             | ✅              |
+| API access               | ❌                 | Read-only     | Full           | Full + webhooks |
+| **Collaboration**        |
+| Users per account        | 1                  | 5             | 25             | Unlimited       |
+| Real-time collaboration  | ❌                 | ❌            | ✅             | ✅              |
+| **Storage & Limits**     |
+| Data storage             | N/A                | 10 GB         | 100 GB         | Unlimited       |
+| API calls/month          | 100                | 10,000        | 100,000        | Unlimited       |
+| **Support**              |
+| Support                  | Community          | Email         | Priority email | 24/7 + phone    |
+| **Pricing**              | Free               | $99/mo        | $499/mo        | Custom          |
 
 ---
 
@@ -1023,10 +1085,10 @@ def get_features_for_tier(tier: str) -> Dict[str, bool]:
 
 ## Document Control
 
-| Version | Date | Author | Changes |
-|---------|------|--------|---------|
-| 1.0 | 2026-01-06 | GitHub Copilot | Initial development plan |
-| 2.0 | 2026-01-06 | GitHub Copilot | Updated architecture: Neo4j graph DB, multi-source data ingestion (streaming/batch), react-force-graph-2d/3d, Python modules only (no classes), API key-based licensing with demo/tier system |
+| Version | Date       | Author         | Changes                                                                                                                                                                                       |
+| ------- | ---------- | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 1.0     | 2026-01-06 | GitHub Copilot | Initial development plan                                                                                                                                                                      |
+| 2.0     | 2026-01-06 | GitHub Copilot | Updated architecture: Neo4j graph DB, multi-source data ingestion (streaming/batch), react-force-graph-2d/3d, Python modules only (no classes), API key-based licensing with demo/tier system |
 
 ---
 

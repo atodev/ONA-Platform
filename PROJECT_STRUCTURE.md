@@ -332,24 +332,31 @@ New-ONA/
 ## Key Directory Purposes
 
 ### `/backend`
+
 Python FastAPI backend using **module-based architecture** (no classes). All business logic organized into functional modules for data ingestion, analytics, and licensing.
 
 ### `/frontend`
+
 React + TypeScript SPA with Redux state management. Uses **react-force-graph-2d/3d** for WebGL-accelerated network visualization.
 
 ### `/docs`
+
 Comprehensive documentation including API specs, deployment guides, and user manuals.
 
 ### `/k8s`
+
 Kubernetes manifests for production deployment with auto-scaling, load balancing, and service mesh.
 
 ### `/terraform`
+
 Infrastructure as Code for cloud provisioning (AWS/Azure/GCP).
 
 ### `/scripts`
+
 Utility scripts for development, deployment, and maintenance tasks.
 
 ### `/monitoring`
+
 Prometheus and Grafana configuration for observability.
 
 ---

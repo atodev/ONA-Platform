@@ -5,6 +5,7 @@
 ### 🎯 Core Architecture Decisions
 
 #### Frontend
+
 - **React 18 + TypeScript**
 - **react-force-graph-2d** - Primary 2D visualization (WebGL-accelerated)
 - **react-force-graph-3d** - Primary 3D visualization (Three.js/WebGL)
@@ -12,11 +13,13 @@
 - **Redux Toolkit** - State management
 
 #### Backend
+
 - **Python FastAPI** - API Gateway
 - **Module-based architecture** - No classes, functional programming only
 - **Microservices** - Independently scalable services
 
 #### Data Sources (Multi-Input)
+
 ```
 ┌─────────────────────────────────────────────────┐
 │            Data Input Sources                   │
@@ -30,12 +33,14 @@
 ```
 
 #### Data Storage
+
 - **Neo4j** - Primary graph database (multi-tenant with labels)
 - **PostgreSQL** - License management, tenant metadata
 - **MongoDB** - Preprocessed graph data for react-force-graph
 - **Redis** - Caching, rate limiting, sessions
 
 #### Message Queue
+
 - **Apache Kafka** - Streaming data ingestion from vendors
 
 ---
@@ -44,14 +49,15 @@
 
 ### API Key-Based Tiers
 
-| Tier | Key Required | Data Input | Max Nodes | Price |
-|------|--------------|------------|-----------|-------|
-| **Demo** | ❌ No | Read-only samples | 100 | Free |
-| **Basic** | ✅ Yes | File upload + Neo4j | 5,000 | $99/mo |
-| **Professional** | ✅ Yes | All sources + streaming | 50,000 | $499/mo |
-| **Enterprise** | ✅ Yes | All sources + APIs | Unlimited | Custom |
+| Tier             | Key Required | Data Input              | Max Nodes | Price   |
+| ---------------- | ------------ | ----------------------- | --------- | ------- |
+| **Demo**         | ❌ No        | Read-only samples       | 100       | Free    |
+| **Basic**        | ✅ Yes       | File upload + Neo4j     | 5,000     | $99/mo  |
+| **Professional** | ✅ Yes       | All sources + streaming | 50,000    | $499/mo |
+| **Enterprise**   | ✅ Yes       | All sources + APIs      | Unlimited | Custom  |
 
 ### Demo Mode Features
+
 - Read-only access to sample datasets
 - Basic 2D visualization (100 node limit)
 - Watermarked visualizations
@@ -59,6 +65,7 @@
 - No data input capabilities
 
 ### Licensed Mode Features
+
 - Full data input from all sources
 - Unlimited graph size (based on tier)
 - Export to all formats
@@ -172,29 +179,33 @@ def validate_license_key(
 ## 🔄 Data Ingestion Workflows
 
 ### 1. CSV File Upload (Licensed Users)
+
 ```
-User uploads CSV → API Gateway → License validation → 
+User uploads CSV → API Gateway → License validation →
 File parser → Graph builder → Neo4j storage → Return success
 ```
 
 ### 2. Neo4j Direct Connection
+
 ```
-User provides credentials → Connection test → Cypher query → 
-Extract subgraph → Transform to standard format → 
+User provides credentials → Connection test → Cypher query →
+Extract subgraph → Transform to standard format →
 Store in tenant-isolated namespace → Cache in MongoDB
 ```
 
 ### 3. Streaming from Kafka (Professional+)
+
 ```
-Vendor publishes to Kafka → Consumer polls topic → 
-Validate message schema → Buffer edges → 
+Vendor publishes to Kafka → Consumer polls topic →
+Validate message schema → Buffer edges →
 Batch write to Neo4j → Update real-time via WebSocket
 ```
 
 ### 4. Relational DB Query
+
 ```
-User configures SQL connection → Run edge query → 
-Transform SQL results to graph format → 
+User configures SQL connection → Run edge query →
+Transform SQL results to graph format →
 Write to Neo4j with tenant label → Preprocess for visualization
 ```
 
@@ -238,6 +249,7 @@ src/
 ## 🔒 Multi-Tenant Isolation Strategy
 
 ### Neo4j Tenant Isolation
+
 ```cypher
 // Every node and relationship tagged with tenant_id
 CREATE (n:Node:Customer {id: "user123", tenant_id: "acme_corp"})
@@ -250,6 +262,7 @@ RETURN n, r, m
 ```
 
 ### PostgreSQL Tenant Isolation
+
 ```sql
 -- Row-level security
 CREATE TABLE datasets (
@@ -265,16 +278,17 @@ CREATE INDEX idx_datasets_account ON datasets(account_id);
 ```
 
 ### API Gateway Isolation
+
 ```python
 # middleware/tenant_middleware.py
 async def enforce_tenant_isolation(request: Request):
     """Extract and validate tenant from license key."""
     api_key = request.headers.get("X-API-Key")
     license_info = validate_license_key(api_key)
-    
+
     if not license_info:
         raise HTTPException(status_code=401)
-    
+
     request.state.account_id = license_info['account_id']
     request.state.tier = license_info['tier']
 ```
@@ -284,6 +298,7 @@ async def enforce_tenant_isolation(request: Request):
 ## 📈 Scalability Strategy
 
 ### Horizontal Scaling Points
+
 1. **API Gateway** - Multiple instances behind load balancer
 2. **Neo4j** - Causal cluster (3+ core servers)
 3. **Kafka** - Multiple brokers with partitioning
@@ -291,6 +306,7 @@ async def enforce_tenant_isolation(request: Request):
 5. **Graph Analytics** - Celery workers on separate nodes
 
 ### Performance Targets
+
 - **API Response**: < 200ms (p95)
 - **Graph Load**: < 2s for 10K nodes
 - **Streaming Latency**: < 100ms ingestion to storage
@@ -336,6 +352,7 @@ async def enforce_tenant_isolation(request: Request):
 ## 📝 Key Implementation Notes
 
 ### Critical Design Decisions
+
 1. ✅ **Python modules only** - No classes, pure functions
 2. ✅ **Multi-source ingestion** - Neo4j, SQL, files, streams
 3. ✅ **Neo4j as primary** - Graph database for customer data
@@ -346,6 +363,7 @@ async def enforce_tenant_isolation(request: Request):
 8. ✅ **Demo mode** - No data input, sample data only
 
 ### Technology Constraints
+
 - **No OOP classes** in Python backend
 - **No JWT/OAuth** - API keys only
 - **Multi-tenant required** - Account isolation enforced at all layers
