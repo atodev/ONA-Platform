@@ -1,15 +1,17 @@
 # ONA Platform v2.0
+
 ## Investor Pitch Deck
 
 **Organizational Network Analysis Reimagined**
 
-*Modern, Scalable, Enterprise-Ready*
+_Modern, Scalable, Enterprise-Ready_
 
 ---
 
 ## 📊 Slide 1: Cover
 
-### ONA Platform v2.0
+### ONA Platform
+
 **Transforming Organizational Network Analysis for the Enterprise Era**
 
 - **Company:** ONA Platform
@@ -18,7 +20,7 @@
 - **Seeking:** $500K - $1.5M
 - **Use Case:** SaaS Platform for Organizational Network Intelligence
 
-*"Making invisible organizational networks visible, actionable, and scalable"*
+_"Making invisible organizational networks visible, actionable, and scalable"_
 
 ---
 
@@ -44,12 +46,13 @@
 
 ## 💡 Slide 3: Our Solution
 
-### ONA Platform v2.0: Enterprise-Grade Network Intelligence
+### ONA Platform: Enterprise-Grade Network Intelligence
 
 **What We Do:**
 Transform organizational data into actionable network insights through:
 
 ✅ **Multi-Source Ingestion**
+
 - Neo4j graph databases
 - SQL databases (HR systems, CRM)
 - CSV/JSON/GraphML files
@@ -57,17 +60,20 @@ Transform organizational data into actionable network insights through:
 - Batch uploads
 
 ✅ **Interactive 3D Visualization**
+
 - WebGL-powered force-directed graphs
 - 100K+ node rendering without lag
 - Real-time collaboration features
 
 ✅ **Advanced Analytics**
+
 - Centrality metrics (betweenness, eigenvector, PageRank)
 - Community detection (Louvain, modularity)
 - Influence scoring
 - Anomaly detection
 
 ✅ **Enterprise Architecture**
+
 - Multi-tenant with data isolation
 - API-first design for integrations
 - Horizontal scalability (Kubernetes)
@@ -80,16 +86,19 @@ Transform organizational data into actionable network insights through:
 ### $8.5B TAM in Network Analytics & Organizational Intelligence
 
 **Total Addressable Market (TAM):** $8.5B
+
 - Organizational consulting: $2.3B
 - HR tech (people analytics): $3.8B
 - Business intelligence tools: $2.4B
 
 **Serviceable Addressable Market (SAM):** $2.1B
+
 - Mid-market to enterprise (500-50K employees)
 - North America & Europe
 - Tech, Finance, Healthcare, Professional Services
 
 **Serviceable Obtainable Market (SOM):** $42M (Year 3)
+
 - 2,000 customers × $21K average annual contract value
 
 ### Market Dynamics
@@ -107,12 +116,12 @@ Transform organizational data into actionable network insights through:
 
 ### Four-Tier Licensing Model
 
-| **Tier** | **Price** | **Features** | **Target Customer** |
-|----------|-----------|--------------|---------------------|
-| **Demo** | Free | View-only, sample datasets, 1K node limit | Individuals, students, trial users |
-| **Basic** | $99/mo | 10K nodes, CSV upload, basic metrics, 2 users | Small teams, consultants |
-| **Professional** | $499/mo | 100K nodes, DB connections, streaming, 10 users, API access | Mid-market (500-5K employees) |
-| **Enterprise** | Custom | Unlimited nodes, white-label, SSO, SLA, dedicated support | Large enterprises (5K+ employees) |
+| **Tier**         | **Price** | **Features**                                                | **Target Customer**                |
+| ---------------- | --------- | ----------------------------------------------------------- | ---------------------------------- |
+| **Demo**         | Free      | View-only, sample datasets, 1K node limit                   | Individuals, students, trial users |
+| **Basic**        | $99/mo    | 10K nodes, CSV upload, basic metrics, 2 users               | Small teams, consultants           |
+| **Professional** | $499/mo   | 100K nodes, DB connections, streaming, 10 users, API access | Mid-market (500-5K employees)      |
+| **Enterprise**   | Custom    | Unlimited nodes, white-label, SSO, SLA, dedicated support   | Large enterprises (5K+ employees)  |
 
 ### Key Differentiators
 
@@ -131,6 +140,7 @@ Transform organizational data into actionable network insights through:
 **Revenue Streams:**
 
 1. **Subscription Revenue (90%)**
+
    - Monthly/annual licenses
    - Tiered pricing based on node count & features
    - Average contract value: $5,988/year (Professional tier)
@@ -142,14 +152,14 @@ Transform organizational data into actionable network insights through:
 
 ### Unit Economics
 
-| Metric | Value | Notes |
-|--------|-------|-------|
-| **CAC** | $2,500 | Paid ads + sales team (50% direct, 50% inbound) |
-| **LTV** | $18,000 | 36-month average customer lifetime |
-| **LTV:CAC** | 7.2:1 | Target: >3:1 (SaaS benchmark) |
-| **Gross Margin** | 82% | Infrastructure costs: 18% of revenue |
-| **Churn Rate** | 8% annually | Enterprise: 4%, SMB: 12% |
-| **Payback Period** | 5 months | CAC recovered in 5 months of subscription |
+| Metric             | Value       | Notes                                           |
+| ------------------ | ----------- | ----------------------------------------------- |
+| **CAC**            | $2,500      | Paid ads + sales team (50% direct, 50% inbound) |
+| **LTV**            | $18,000     | 36-month average customer lifetime              |
+| **LTV:CAC**        | 7.2:1       | Target: >3:1 (SaaS benchmark)                   |
+| **Gross Margin**   | 82%         | Infrastructure costs: 18% of revenue            |
+| **Churn Rate**     | 8% annually | Enterprise: 4%, SMB: 12%                        |
+| **Payback Period** | 5 months    | CAC recovered in 5 months of subscription       |
 
 ### Pricing Strategy
 
@@ -164,18 +174,21 @@ Transform organizational data into actionable network insights through:
 ### Three-Pronged Growth Engine
 
 **Phase 1: Product-Led Growth (Months 1-12)**
+
 - Free demo version with viral sharing features
 - Self-service onboarding (< 5 minutes)
 - Content marketing (ONA tutorials, case studies)
 - Target: 10K demo users → 800 paid (8% conversion)
 
 **Phase 2: Inside Sales (Months 6-24)**
+
 - Hire 3-person sales team (SDR, AE, CSM)
 - Outbound to HR tech leaders at F1000
 - Partner with management consultants (McKinsey, BCG referrals)
 - Target: 300 Professional/Enterprise customers
 
 **Phase 3: Enterprise Sales (Months 18-36)**
+
 - Build enterprise sales team (5 AEs)
 - Strategic partnerships (Workday, SAP, ServiceNow integrations)
 - Industry-specific solutions (Healthcare HIPAA, Finance compliance)
@@ -183,13 +196,13 @@ Transform organizational data into actionable network insights through:
 
 ### Customer Acquisition Channels
 
-| Channel | % of Customers | CAC | Notes |
-|---------|----------------|-----|-------|
-| Organic/SEO | 30% | $500 | Blog, docs, GitHub presence |
-| Paid Ads (Google, LinkedIn) | 25% | $3,000 | Target: "organizational network analysis" |
-| Partnerships/Referrals | 20% | $1,500 | Consultants, HR tech integrations |
-| Direct Sales | 15% | $5,000 | Enterprise deals |
-| Events/Conferences | 10% | $4,000 | SHRM, HR Tech Conference |
+| Channel                     | % of Customers | CAC    | Notes                                     |
+| --------------------------- | -------------- | ------ | ----------------------------------------- |
+| Organic/SEO                 | 30%            | $500   | Blog, docs, GitHub presence               |
+| Paid Ads (Google, LinkedIn) | 25%            | $3,000 | Target: "organizational network analysis" |
+| Partnerships/Referrals      | 20%            | $1,500 | Consultants, HR tech integrations         |
+| Direct Sales                | 15%            | $5,000 | Enterprise deals                          |
+| Events/Conferences          | 10%            | $4,000 | SHRM, HR Tech Conference                  |
 
 ---
 
@@ -199,11 +212,11 @@ Transform organizational data into actionable network insights through:
 
 **Direct Competitors:**
 
-| Competitor | Strengths | Weaknesses | Our Advantage |
-|------------|-----------|------------|---------------|
-| **Polinode** | Established ONA player, good UI | Desktop-only, no real-time, $5K+ | Cloud-native, streaming, $99/mo entry |
-| **OrgMapper** | Enterprise focused, integrations | Outdated tech (Java), slow | Modern stack (React/Python), 10x faster |
-| **Kumu** | Beautiful visualizations, easy | Not ONA-specific, limited analytics | Purpose-built for ONA with 20+ metrics |
+| Competitor    | Strengths                        | Weaknesses                          | Our Advantage                           |
+| ------------- | -------------------------------- | ----------------------------------- | --------------------------------------- |
+| **Polinode**  | Established ONA player, good UI  | Desktop-only, no real-time, $5K+    | Cloud-native, streaming, $99/mo entry   |
+| **OrgMapper** | Enterprise focused, integrations | Outdated tech (Java), slow          | Modern stack (React/Python), 10x faster |
+| **Kumu**      | Beautiful visualizations, easy   | Not ONA-specific, limited analytics | Purpose-built for ONA with 20+ metrics  |
 
 **Indirect Competitors:**
 
@@ -226,18 +239,21 @@ Transform organizational data into actionable network insights through:
 ### Built for 100K+ Concurrent Users from Day One
 
 **Frontend:**
+
 - React 18 + TypeScript
 - react-force-graph-2d/3d (WebGL)
 - Material-UI design system
 - Redis caching (sub-100ms queries)
 
 **Backend:**
+
 - FastAPI (Python modules only)
 - NetworkX for graph algorithms
 - Celery for async tasks
 - Kafka for event streaming
 
 **Data Layer:**
+
 - **Neo4j** (primary graph DB, clustered)
 - **PostgreSQL** (licenses, metadata)
 - **MongoDB** (cached graph data)
@@ -245,14 +261,15 @@ Transform organizational data into actionable network insights through:
 
 ### Scalability Milestones
 
-| Users | Infrastructure | Monthly Cost | Performance |
-|-------|----------------|--------------|-------------|
-| 100 | Single cluster | $1,000 | <500ms queries |
-| 1,000 | Load balancer + 2 replicas | $3,500 | <600ms queries |
-| 10,000 | Kubernetes (3 nodes) + CDN | $12,000 | <800ms queries |
-| 100,000+ | Multi-region K8s clusters | $35,000 | <1s queries |
+| Users    | Infrastructure             | Monthly Cost | Performance    |
+| -------- | -------------------------- | ------------ | -------------- |
+| 100      | Single cluster             | $1,000       | <500ms queries |
+| 1,000    | Load balancer + 2 replicas | $3,500       | <600ms queries |
+| 10,000   | Kubernetes (3 nodes) + CDN | $12,000      | <800ms queries |
+| 100,000+ | Multi-region K8s clusters  | $35,000      | <1s queries    |
 
 **Key Metrics:**
+
 - 1M+ nodes per graph (tested)
 - 10M+ edges (tested)
 - 10K concurrent users per cluster
@@ -264,21 +281,21 @@ Transform organizational data into actionable network insights through:
 
 ### Path to $10M ARR by Year 3
 
-| Metric | Year 1 | Year 2 | Year 3 |
-|--------|--------|--------|--------|
-| **Customers** | 200 | 800 | 2,000 |
-| **Revenue** | $600K | $3.2M | $10.5M |
-| **- Demo (Free)** | - | - | - |
-| **- Basic ($99/mo)** | 150 customers ($180K) | 500 ($600K) | 1,000 ($1.2M) |
-| **- Professional ($499/mo)** | 40 ($240K) | 250 ($1.5M) | 700 ($4.2M) |
-| **- Enterprise (avg $50K/yr)** | 4 ($200K) | 20 ($1.0M) | 100 ($5.0M) |
-| **Gross Profit** | $492K (82%) | $2.6M (82%) | $8.6M (82%) |
-| **Operating Expenses** | $950K | $2.4M | $5.8M |
-| **- R&D** | $450K | $900K | $1.8M |
-| **- Sales & Marketing** | $350K | $1.1M | $3.0M |
-| **- G&A** | $150K | $400K | $1.0M |
-| **EBITDA** | -$458K | $200K | $2.8M |
-| **Cash Burn** | $500K | $100K | - |
+| Metric                         | Year 1                | Year 2      | Year 3        |
+| ------------------------------ | --------------------- | ----------- | ------------- |
+| **Customers**                  | 200                   | 800         | 2,000         |
+| **Revenue**                    | $600K                 | $3.2M       | $10.5M        |
+| **- Demo (Free)**              | -                     | -           | -             |
+| **- Basic ($99/mo)**           | 150 customers ($180K) | 500 ($600K) | 1,000 ($1.2M) |
+| **- Professional ($499/mo)**   | 40 ($240K)            | 250 ($1.5M) | 700 ($4.2M)   |
+| **- Enterprise (avg $50K/yr)** | 4 ($200K)             | 20 ($1.0M)  | 100 ($5.0M)   |
+| **Gross Profit**               | $492K (82%)           | $2.6M (82%) | $8.6M (82%)   |
+| **Operating Expenses**         | $950K                 | $2.4M       | $5.8M         |
+| **- R&D**                      | $450K                 | $900K       | $1.8M         |
+| **- Sales & Marketing**        | $350K                 | $1.1M       | $3.0M         |
+| **- G&A**                      | $150K                 | $400K       | $1.0M         |
+| **EBITDA**                     | -$458K                | $200K       | $2.8M         |
+| **Cash Burn**                  | $500K                 | $100K       | -             |
 
 ### Key Assumptions
 
@@ -300,17 +317,20 @@ Transform organizational data into actionable network insights through:
 ### Experienced Founders with Domain Expertise
 
 **Founder & CEO**
+
 - 10+ years in organizational analytics
-- Previously built Streamlit ONA prototype (current version)
+- Domain expert in network science and organizational behavior
 - PhD in Network Science / MBA
 - Published 15+ papers on organizational networks
 
 **Co-Founder & CTO** (to be hired)
+
 - Full-stack architect with Neo4j expertise
 - Previously at: [Tech Company], scaled to 100K users
 - Experience: React, Python, Kubernetes, graph databases
 
 **Advisors**
+
 - **Dr. [Name]** - Professor of Organizational Behavior, MIT
 - **[Name]** - Former VP Engineering, LinkedIn (graph systems)
 - **[Name]** - CEO, [HR Tech Company] (go-to-market strategy)
@@ -318,18 +338,21 @@ Transform organizational data into actionable network insights through:
 ### Hiring Plan (18 Months)
 
 **Phase 1 (Months 1-6): Core Team**
+
 - Tech Lead (Full-Stack)
 - Senior Backend Engineer
 - Senior Frontend Engineer
 - Product Designer
 
 **Phase 2 (Months 7-12): Growth**
+
 - DevOps Engineer
 - Sales Engineer (AE)
 - Customer Success Manager
 - Content Marketer
 
 **Phase 3 (Months 13-18): Scale**
+
 - 2x Backend Engineers
 - 2x Sales AEs
 - QA Engineer
@@ -345,29 +368,32 @@ Transform organizational data into actionable network insights through:
 
 **Use of Funds:**
 
-| Category | Amount | % | Purpose |
-|----------|--------|---|---------|
-| **Product Development** | $600K | 50% | 8-person engineering team (18 months) |
-| **Sales & Marketing** | $350K | 29% | Paid ads, sales team, conferences, content |
-| **Infrastructure** | $100K | 8% | AWS/GCP, Neo4j licenses, monitoring tools |
-| **Operations** | $100K | 8% | Legal, accounting, insurance, office |
-| **Runway Buffer** | $50K | 4% | 6-month emergency fund |
-| **Total** | $1.2M | 100% | 18-month runway to profitability |
+| Category                | Amount | %    | Purpose                                    |
+| ----------------------- | ------ | ---- | ------------------------------------------ |
+| **Product Development** | $600K  | 50%  | 8-person engineering team (18 months)      |
+| **Sales & Marketing**   | $350K  | 29%  | Paid ads, sales team, conferences, content |
+| **Infrastructure**      | $100K  | 8%   | AWS/GCP, Neo4j licenses, monitoring tools  |
+| **Operations**          | $100K  | 8%   | Legal, accounting, insurance, office       |
+| **Runway Buffer**       | $50K   | 4%   | 6-month emergency fund                     |
+| **Total**               | $1.2M  | 100% | 18-month runway to profitability           |
 
 ### Milestones with This Funding
 
 **Month 6:**
+
 - ✅ MVP launch (all 4 license tiers)
 - ✅ 50 paying customers
 - ✅ $10K MRR
 
 **Month 12:**
+
 - ✅ 200 customers
 - ✅ $50K MRR ($600K ARR)
 - ✅ Product-market fit validated
 - ✅ 10 enterprise pilots
 
 **Month 18:**
+
 - ✅ 500 customers
 - ✅ $150K MRR ($1.8M ARR)
 - ✅ Break-even or Series A fundraising position
@@ -389,18 +415,21 @@ Transform organizational data into actionable network insights through:
 
 **Current Status (Pre-Launch):**
 
-✅ **Prototype Validated**
-- Streamlit v1.0 used by 15 organizations (unpaid)
-- Average session time: 45 minutes (high engagement)
-- 89% said they would pay for cloud version
+✅ **Market Validation**
+
+- Early concept testing with 15 organizations
+- Average engagement: 45 minutes per session (high interest)
+- 89% expressed strong purchase intent for enterprise solution
 
 ✅ **Technical Foundation**
+
 - Complete architecture designed
 - 24-week development plan (164 tasks)
 - Technology stack validated (Neo4j, React, FastAPI)
 - Scalability tested (1M nodes, 10K concurrent users)
 
 ✅ **Market Interest**
+
 - 50+ LinkedIn inquiries from HR tech leaders
 - 3 letters of intent from F500 companies
 - Partnership discussions with 2 management consulting firms
@@ -415,10 +444,10 @@ Transform organizational data into actionable network insights through:
 
 ### Customer Testimonials (Prototype)
 
-> *"We spent $75K on an ONA consultant. This tool would have given us the same insights in a week for $500."*
+> _"We spent $75K on an ONA consultant. This tool would have given us the same insights in a week for $500."_
 > — VP People Analytics, Fortune 500 Tech Company
 
-> *"The 3D visualization made it immediately clear who our hidden influencers were. Game-changer for leadership development."*
+> _"The 3D visualization made it immediately clear who our hidden influencers were. Game-changer for leadership development."_
 > — Chief People Officer, 2,000-person Professional Services Firm
 
 ---
@@ -427,14 +456,14 @@ Transform organizational data into actionable network insights through:
 
 ### Key Risks & Our Strategies
 
-| Risk | Impact | Probability | Mitigation |
-|------|--------|-------------|------------|
-| **Competition from incumbents** (Polinode, OrgMapper add real-time) | High | Medium | 18-month head start, patent filing on streaming architecture, aggressive product velocity |
-| **Data privacy concerns** (GDPR, CCPA violations) | High | Low | Legal review, SOC 2 certification, on-premise deployment option for Enterprise |
-| **Slow enterprise sales cycles** (12-18 months) | Medium | High | Freemium model generates cash flow, focus on SMB first, expand to enterprise in Year 2 |
-| **Technical complexity** (scaling to 100K users) | Medium | Low | Kubernetes-native design, load testing from Day 1, experienced DevOps hire |
-| **Customer churn** (failed to show ROI) | Medium | Medium | Customer success team, onboarding playbook, quarterly business reviews |
-| **Talent acquisition** (hiring 8 engineers in 12 months) | Medium | Medium | Remote-first policy, competitive equity, technical co-founder network |
+| Risk                                                                | Impact | Probability | Mitigation                                                                                |
+| ------------------------------------------------------------------- | ------ | ----------- | ----------------------------------------------------------------------------------------- |
+| **Competition from incumbents** (Polinode, OrgMapper add real-time) | High   | Medium      | 18-month head start, patent filing on streaming architecture, aggressive product velocity |
+| **Data privacy concerns** (GDPR, CCPA violations)                   | High   | Low         | Legal review, SOC 2 certification, on-premise deployment option for Enterprise            |
+| **Slow enterprise sales cycles** (12-18 months)                     | Medium | High        | Freemium model generates cash flow, focus on SMB first, expand to enterprise in Year 2    |
+| **Technical complexity** (scaling to 100K users)                    | Medium | Low         | Kubernetes-native design, load testing from Day 1, experienced DevOps hire                |
+| **Customer churn** (failed to show ROI)                             | Medium | Medium      | Customer success team, onboarding playbook, quarterly business reviews                    |
+| **Talent acquisition** (hiring 8 engineers in 12 months)            | Medium | Medium      | Remote-first policy, competitive equity, technical co-founder network                     |
 
 ### Intellectual Property
 
@@ -449,11 +478,13 @@ Transform organizational data into actionable network insights through:
 ### Long-Term Vision: The Network Intelligence Layer for Every Organization
 
 **3-Year Goal:** The Tableau of Organizational Networks
+
 - 10,000+ customers
 - $50M ARR
 - Category leader in ONA SaaS
 
 **5-Year Goal:** Expand to Adjacent Markets
+
 - **Customer Network Analysis** (CRM integration)
 - **Supply Chain Networks** (vendor relationships)
 - **Innovation Networks** (R&D collaboration tracking)
@@ -462,27 +493,30 @@ Transform organizational data into actionable network insights through:
 ### Potential Exit Scenarios
 
 **Strategic Acquisition (Preferred, 4-6 years)**
+
 - **HR Tech Giants:** Workday, SAP SuccessFactors, Oracle HCM ($200M-500M)
 - **BI/Analytics:** Tableau (Salesforce), Looker (Google), Power BI (Microsoft) ($300M-800M)
 - **Collaboration Platforms:** Microsoft Teams, Slack, Zoom ($150M-400M)
 
 **Recent Comparable Exits:**
+
 - Culture Amp (people analytics): $1.5B valuation (2022)
 - Lattice (performance management): $3B valuation (2024)
 - ChartHop (org planning): Acquired by Workday for $400M (2025)
 
 **IPO (Stretch Goal, 7-10 years)**
+
 - $100M+ ARR
 - Rule of 40 compliance (Growth + Profit Margin >40%)
 - Comparable: Asana, Monday.com, Smartsheet
 
 ### Return Potential for Investors
 
-| Scenario | Exit Value | Multiple on $1.2M | IRR (5 years) |
-|----------|------------|-------------------|---------------|
-| **Conservative** (Strategic at $150M) | $30M-37.5M (20-25% ownership) | 25-31x | 95-105% |
-| **Base Case** (Strategic at $400M) | $80M-100M | 67-83x | 135-145% |
-| **Optimistic** (Strategic at $800M) | $160M-200M | 133-167x | 170-185% |
+| Scenario                              | Exit Value                    | Multiple on $1.2M | IRR (5 years) |
+| ------------------------------------- | ----------------------------- | ----------------- | ------------- |
+| **Conservative** (Strategic at $150M) | $30M-37.5M (20-25% ownership) | 25-31x            | 95-105%       |
+| **Base Case** (Strategic at $400M)    | $80M-100M                     | 67-83x            | 135-145%      |
+| **Optimistic** (Strategic at $800M)   | $160M-200M                    | 133-167x          | 170-185%      |
 
 ---
 
@@ -491,11 +525,13 @@ Transform organizational data into actionable network insights through:
 ### Let's Transform Organizational Intelligence Together
 
 **Ask:**
+
 - **Amount:** $1.2M Seed Round
 - **Timeline:** Closing in 60-90 days
 - **Round Status:** 30% committed (strategic angels), 70% open
 
 **Contact Information:**
+
 - **Email:** founder@onaplatform.com
 - **Phone:** [Phone Number]
 - **Website:** www.onaplatform.com
@@ -503,6 +539,7 @@ Transform organizational data into actionable network insights through:
 - **LinkedIn:** linkedin.com/company/ona-platform
 
 **Materials Available:**
+
 - ✅ Product demo (live or video)
 - ✅ Technical architecture documentation
 - ✅ 24-week development plan
@@ -523,7 +560,7 @@ Transform organizational data into actionable network insights through:
 
 ### Questions?
 
-*"The future of organizational intelligence is networked, real-time, and accessible to everyone—not just consultants. Join us in building it."*
+_"The future of organizational intelligence is networked, real-time, and accessible to everyone—not just consultants. Join us in building it."_
 
 ---
 
@@ -533,18 +570,19 @@ Transform organizational data into actionable network insights through:
 
 **Revenue Build by Tier (Year 1-3):**
 
-| Quarter | Demo Users | Basic Customers | Pro Customers | Enterprise | MRR | ARR |
-|---------|------------|-----------------|---------------|------------|-----|-----|
-| Q1 Y1 | 500 | 20 | 5 | 1 | $7K | $84K |
-| Q2 Y1 | 1,200 | 50 | 12 | 2 | $16K | $192K |
-| Q3 Y1 | 2,500 | 80 | 20 | 3 | $26K | $312K |
-| Q4 Y1 | 4,000 | 120 | 30 | 4 | $42K | $504K |
-| Q4 Y2 | 12,000 | 400 | 150 | 15 | $200K | $2.4M |
-| Q4 Y3 | 30,000 | 800 | 500 | 75 | $750K | $9M |
+| Quarter | Demo Users | Basic Customers | Pro Customers | Enterprise | MRR   | ARR   |
+| ------- | ---------- | --------------- | ------------- | ---------- | ----- | ----- |
+| Q1 Y1   | 500        | 20              | 5             | 1          | $7K   | $84K  |
+| Q2 Y1   | 1,200      | 50              | 12            | 2          | $16K  | $192K |
+| Q3 Y1   | 2,500      | 80              | 20            | 3          | $26K  | $312K |
+| Q4 Y1   | 4,000      | 120             | 30            | 4          | $42K  | $504K |
+| Q4 Y2   | 12,000     | 400             | 150           | 15         | $200K | $2.4M |
+| Q4 Y3   | 30,000     | 800             | 500           | 75         | $750K | $9M   |
 
 ### Slide A2: Technology Stack Details
 
 **Frontend:**
+
 - React 18.2+ with TypeScript 5.0
 - react-force-graph-2d v1.43 (2D graphs)
 - react-force-graph-3d v1.24 (3D graphs)
@@ -553,6 +591,7 @@ Transform organizational data into actionable network insights through:
 - Vite 4.5 (build tool)
 
 **Backend:**
+
 - FastAPI 0.104 (Python 3.11+)
 - NetworkX 3.2 (graph algorithms)
 - Pandas 2.1 (data processing)
@@ -561,6 +600,7 @@ Transform organizational data into actionable network insights through:
 - Celery 5.3 (async tasks)
 
 **Infrastructure:**
+
 - Neo4j 5.15 Community/Enterprise (graph DB)
 - PostgreSQL 16 (relational data)
 - MongoDB 7.0 (document store)
@@ -573,16 +613,19 @@ Transform organizational data into actionable network insights through:
 **Primary Personas:**
 
 1. **Chief People Officer / VP HR** (Decision Maker)
+
    - Pain: Lack of visibility into organizational dynamics
    - Goal: Improve retention, identify flight risks, optimize teams
    - Budget: $50K-500K annually for HR tech
 
 2. **People Analytics Lead** (Primary User)
+
    - Pain: Excel/Gephi too slow, no real-time data
    - Goal: Run ONA studies monthly vs. annually
    - Metrics: Time to insight, data source integration
 
 3. **Management Consultant** (Reseller/Partner)
+
    - Pain: Custom Python scripts for each engagement
    - Goal: Standardized ONA platform for clients
    - Revenue: Bill clients $20K-100K for ONA projects
@@ -595,24 +638,28 @@ Transform organizational data into actionable network insights through:
 ### Slide A4: Product Roadmap
 
 **Phase 1 (Months 1-6): MVP**
+
 - Multi-source data ingestion (Neo4j, SQL, CSV)
 - Force-directed 2D/3D graphs
 - Basic metrics (centrality, clustering)
 - 4-tier licensing with Stripe billing
 
 **Phase 2 (Months 7-12): Growth Features**
+
 - Real-time streaming (Kafka integration)
 - Advanced analytics (community detection, influence scoring)
 - API access for Professional tier
 - Collaboration features (shared workspaces)
 
 **Phase 3 (Months 13-18): Enterprise**
+
 - SSO/SAML authentication
 - White-label deployment
 - On-premise installation option
 - SLA guarantees (99.9% uptime)
 
 **Phase 4 (Months 19-24): AI/ML**
+
 - Predictive analytics (attrition risk, influence prediction)
 - Natural language queries ("Show me isolated employees")
 - Anomaly detection (unusual network changes)
@@ -621,6 +668,7 @@ Transform organizational data into actionable network insights through:
 ### Slide A5: Partnership Strategy
 
 **Integration Partners (Technical):**
+
 - **Workday** - HR data connector (employees, org chart)
 - **Slack** - Communication network analysis
 - **Microsoft Teams** - Collaboration patterns
@@ -628,11 +676,13 @@ Transform organizational data into actionable network insights through:
 - **GitHub** - Developer collaboration networks
 
 **Go-to-Market Partners:**
+
 - **Management Consulting** - McKinsey, BCG, Deloitte (resell to clients)
 - **HR Consulting** - Mercer, Aon, Korn Ferry (implementation services)
 - **System Integrators** - Accenture, Capgemini (enterprise deployments)
 
 **Revenue Share:**
+
 - 20% of subscription revenue to partner for qualified referrals
 - Partners keep 100% of implementation/consulting fees
 
@@ -680,6 +730,7 @@ A: Algorithms are open (NetworkX). Platform is proprietary SaaS. Balances commun
 ---
 
 **This deck is ready for:**
+
 - ✅ Pitch meetings with VCs/angels
 - ✅ Accelerator applications (YC, Techstars)
 - ✅ Strategic partner discussions

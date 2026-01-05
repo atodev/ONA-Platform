@@ -1,14 +1,14 @@
 ![ONA Platform](ONA-P.png)
 
-# ONA Platform v2.0 - Modernization Project
+# ONA Platform
 
-> **Organizational Network Analysis Platform** - React.js frontend with Python FastAPI backend and multi-source graph database architecture
+> **Enterprise-Grade Organizational Network Analysis** - React.js frontend with Python FastAPI backend and multi-source graph database architecture
 
 ---
 
 ## 📋 Project Overview
 
-This repository contains the complete modernization plan for transforming the existing Streamlit-based ONA application into a scalable, enterprise-grade platform with:
+This repository contains the complete development plan for a scalable, enterprise-grade organizational network analysis platform with:
 
 - **React 18 + TypeScript** frontend with WebGL-accelerated 3D network visualization
 - **Python FastAPI** backend using modular (non-class) architecture
