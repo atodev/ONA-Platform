@@ -1,3 +1,5 @@
+![ONA Platform](ONA-P.png)
+
 # ONA Platform v2.0 - Modernization Project
 
 > **Organizational Network Analysis Platform** - React.js frontend with Python FastAPI backend and multi-source graph database architecture
