@@ -1,0 +1,297 @@
+# ONA Platform v2.0 - Git Ignore File
+
+# ============================================
+# Python Backend
+# ============================================
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# ============================================
+# Frontend (React + TypeScript)
+# ============================================
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Production build
+frontend/dist/
+frontend/build/
+
+# Testing
+coverage/
+
+# Next.js (if used)
+.next/
+out/
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Local env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel
+
+# Turbo
+.turbo
+
+# ============================================
+# IDEs and Editors
+# ============================================
+# VSCode
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+*.iws
+
+# Sublime Text
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+*.swp
+*.swo
+*~
+
+# Emacs
+*~
+\#*\#
+.\#*
+
+# ============================================
+# Operating System
+# ============================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# ============================================
+# Docker
+# ============================================
+*.log
+docker-compose.override.yml
+
+# ============================================
+# Database & Data Files
+# ============================================
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Data directories
+backend/data/
+data/
+uploads/
+temp/
+tmp/
+
+# Neo4j
+neo4j_data/
+
+# PostgreSQL
+postgres_data/
+
+# MongoDB
+mongo_data/
+
+# Redis
+redis_data/
+
+# Kafka
+kafka_data/
+
+# ============================================
+# Secrets & Credentials
+# ============================================
+# Environment files with secrets
+.env
+.env.*
+!.env.example
+!.env.template
+
+# Credentials
+*credentials*.json
+*secrets*.yaml
+*.pem
+*.key
+*.cert
+
+# AWS
+.aws/
+
+# GCP
+*-key.json
+gcloud-service-key.json
+
+# ============================================
+# Build & Generated Files
+# ============================================
+# Python
+*.egg
+*.egg-info
+dist/
+build/
+
+# Frontend
+*.tsbuildinfo
+.npm
+.eslintcache
+
+# Compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# ============================================
+# Logs & Monitoring
+# ============================================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# ============================================
+# Testing & Coverage
+# ============================================
+.nyc_output
+coverage/
+*.lcov
+.pytest_cache/
+.tox/
+
+# ============================================
+# Temporary Files
+# ============================================
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# ============================================
+# Documentation Build
+# ============================================
+docs/_build/
+site/
+
+# ============================================
+# Terraform (Infrastructure as Code)
+# ============================================
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# ============================================
+# Kubernetes
+# ============================================
+# Secrets
+*secret*.yaml
+
+# ============================================
+# Misc
+# ============================================
+.cache/
+.parcel-cache/
+.sass-cache/
