@@ -20,7 +20,9 @@ This repository contains the complete development plan for a scalable, enterpris
 
 ## 📚 Documentation Structure
 
-This project includes comprehensive planning and implementation documentation:
+This project includes comprehensive planning and implementation documentation.
+
+**📖 [See Complete Documentation Index →](./INDEX.md)**
 
 ### Core Planning Documents
 
