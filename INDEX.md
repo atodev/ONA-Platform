@@ -22,6 +22,21 @@
 
 ---
 
+### 💰 **For Investors**
+
+**→ Start with: [INVESTOR_PITCH_DECK.md](./INVESTOR_PITCH_DECK.md)**
+
+- 16-slide comprehensive pitch deck
+- Market opportunity: $8.5B TAM
+- Financial projections: $600K → $10.5M ARR in 3 years
+- Funding ask: $1.2M seed round
+- Exit strategy: $150M-$800M acquisition potential
+- Detailed unit economics and customer acquisition strategy
+
+**→ Then review: [SCALABILITY_ANALYSIS.md](./SCALABILITY_ANALYSIS.md)** for growth infrastructure
+
+---
+
 ### 👨‍💼 **For Product Managers**
 
 **→ Start with: [DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md)**
@@ -100,6 +115,7 @@
 | Document                                                 | Purpose                | Pages              | Key Content                                 |
 | -------------------------------------------------------- | ---------------------- | ------------------ | ------------------------------------------- |
 | **[README.md](./README.md)**                             | Project overview       | Entry point        | Technology stack, quick start, team, budget |
+| **[INVESTOR_PITCH_DECK.md](./INVESTOR_PITCH_DECK.md)** 💰 | Investor pitch deck    | 16 slides + appendix | Market, financials, funding ask, exit strategy |
 | **[DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md)** ⭐      | Master plan            | 60+ sections       | 10 phases, 164 todos, milestones, timeline  |
 | **[ARCHITECTURE_SUMMARY.md](./ARCHITECTURE_SUMMARY.md)** | Architecture reference | Quick lookup       | Tech decisions, data flows, module patterns |
 | **[IMPLEMENTATION_GUIDE.md](./IMPLEMENTATION_GUIDE.md)** | Developer guide        | Code examples      | Setup, modules, React components            |
@@ -111,11 +127,18 @@
 
 ## 🎯 By Use Case
 
+### "I need to pitch to investors"
+
+1. [INVESTOR_PITCH_DECK.md](./INVESTOR_PITCH_DECK.md) - Complete 16-slide pitch deck
+2. [SCALABILITY_ANALYSIS.md](./SCALABILITY_ANALYSIS.md) - Growth infrastructure and costs
+3. [DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md) - Section: "Budget Estimate"
+
 ### "I need to understand the business case"
 
 1. [README.md](./README.md) - Overview and budget
-2. [DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md) - Section: "Budget Estimate"
-3. [ARCHITECTURE_SUMMARY.md](./ARCHITECTURE_SUMMARY.md) - Section: "License Tier Feature Matrix"
+2. [INVESTOR_PITCH_DECK.md](./INVESTOR_PITCH_DECK.md) - Market opportunity and financials
+3. [DEVELOPMENT_PLAN.md](./DEVELOPMENT_PLAN.md) - Section: "Budget Estimate"
+4. [ARCHITECTURE_SUMMARY.md](./ARCHITECTURE_SUMMARY.md) - Section: "License Tier Feature Matrix"
 
 ### "I need to estimate development time"
 
