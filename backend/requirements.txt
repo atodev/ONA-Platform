@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+neo4j
+psycopg2-binary
+pymongo
+redis
+kafka-python
+networkx 
+pandas 
+pydantic 
+python-multipart
+celery 
+pytest
+black
+
+
+ 

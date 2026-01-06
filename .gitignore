@@ -275,6 +275,7 @@ coverage/
 docs/_build/
 site/
 
+
 # ============================================
 # Terraform (Infrastructure as Code)
 # ============================================
@@ -295,3 +296,4 @@ site/
 .cache/
 .parcel-cache/
 .sass-cache/
+GITHUB_SETUP.md
